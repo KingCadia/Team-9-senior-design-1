@@ -1,4 +1,7 @@
 mega = arduino('COM3','MEGA2560');
+% configures the pins
+configurePin(mega, 'A0', 'AnalogInput');
+configurePin(mega, 'D5', 'DigitalOutput');
 
 % loop to control the accuation of e mag
 threshhold = 2.5;
