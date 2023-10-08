@@ -57,18 +57,21 @@ for i = 1:height
 end
 
 % gets a clean black and white image
-bw = im2bw(subtraction2);
-SE = strel('disk', 6);
+bw = im2bw(subtraction2, .8);
+bw = ~bw;
+SE = strel('disk', 2);
 erode = imerode(bw, SE);
-SE = strel('disk', 10);
+
+SE = strel('disk', 6);
 dialate = imdilate(erode, SE);
 
 % gets the stats from the image
-stats = regionprops(bw, 'Centroid');
+stats = regionprops(dialate, 'Centroid');
 centroids = cat(1, stats.Centroid);
-imshow(bw)
+imshow(subtraction2);
 hold on
-plot(centroids(:,1),centroids(:,2),'b*')
+plot(centroids(:,1),centroids(:,2),'bl*')
 hold off
+
 
 %imshowpair(erode, dialate, 'montage');
