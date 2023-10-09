@@ -2,8 +2,8 @@ clc;
 clear all;
 close all;
 %gets the images and sizes
-background = imread('background.jpg');
-foreground = imread('foreground.jpg');
+background = imread('test_back.jpg');
+foreground = imread('red.jpg');
 [height, width, depth] = size(foreground);
 subtraction = 255 - (background - foreground);
 subtraction2 = subtraction;
@@ -63,6 +63,8 @@ erode = imerode(bw, SE);
 SE = strel('disk', 6);
 dialate = imdilate(erode, SE);
 
+ims
+%%
 % gets the stats from the image
 stats = regionprops(dialate, 'Centroid');
 centroids = cat(1, stats.Centroid);
