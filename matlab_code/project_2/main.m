@@ -1,13 +1,13 @@
 clc;
 clear all;
 close all;
-%gets the images and sizes
-background = imread('background.jpg');
-foreground = imread('foreground.jpg');
+%% gets the images and sizes
+background = imread('test_back.jpg');
+foreground = imread('yellow.jpg');
 [height, width, depth] = size(foreground);
 subtraction = 255 - (background - foreground);
 subtraction2 = subtraction;
-% does the threshholding for the colors to brighten 
+%does the threshholding for the colors to brighten 
 for i = 1:height
     for j = 1:width
         % check for red
@@ -51,7 +51,7 @@ for i = 1:height
         end
     end
 end
-%imshow(subtraction2);
+
 
 
 % gets a clean black and white image
@@ -63,13 +63,14 @@ erode = imerode(bw, SE);
 SE = strel('disk', 6);
 dialate = imdilate(erode, SE);
 
-% gets the stats from the image
+%% gets the stats from the image
 stats = regionprops(dialate, 'Centroid');
 centroids = cat(1, stats.Centroid);
 imshow(bw);
 hold on
 plot(centroids(:,1),centroids(:,2),'bl*')
 hold off
+%% calculates the well locs
 
 
-%imshowpair(erode, dialate, 'montage');
+
