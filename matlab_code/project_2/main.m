@@ -1,13 +1,14 @@
-clear all;
-clc
+%%
+clc;
 % makes the obj that holds the compareing images
-background = imread('test_back.jpg');
-foreground = imread('red.jpg');
+background = imread('background.jpg');
+%foreground = imread('test.jpg');
 im = impross(background, foreground);
+%%
 
 % makes the gamestate struct
 gamestate.original = background;
-gamestate.well_color = [0, 0, 0, 0, 0, 0, 0, 0];
+gamestate.well_color = ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"];
 gamestate.curret = foreground;
 gamestate.diffrence = im.subtraction;
 gamestate.noise_removal = im.bw;
@@ -20,42 +21,42 @@ num = size(stats);
 num = num(1);
 
 % gets the well loc bw image
-background = imread("well_loc_blank.jpg");
+background = imread("background.jpg");
 foreground = imread("well_loc_1.jpg");
 im_holder = impross(background, foreground);
 well_loc_1 = im_holder.bw;
 
-background = imread("well_loc_blank.jpg");
+background = imread("background.jpg");
 foreground = imread("well_loc_2.jpg");
 im_holder = impross(background, foreground);
 well_loc_2 = im_holder.bw;
 
-background = imread("well_loc_blank.jpg");
+background = imread("background.jpg");
 foreground = imread("well_loc_3.jpg");
 im_holder = impross(background, foreground);
 well_loc_3 = im_holder.bw;
 
-background = imread("well_loc_blank.jpg");
+background = imread("background.jpg");
 foreground = imread("well_loc_4.jpg");
 im_holder = impross(background, foreground);
 well_loc_4 = im_holder.bw;
 
-background = imread("well_loc_blank.jpg");
+background = imread("background.jpg");
 foreground = imread("well_loc_5.jpg");
 im_holder = impross(background, foreground);
 well_loc_5 = im_holder.bw;
 
-background = imread("well_loc_blank.jpg");
+background = imread("background.jpg");
 foreground = imread("well_loc_6.jpg");
 im_holder = impross(background, foreground);
 well_loc_6 = im_holder.bw;
 
-background = imread("well_loc_blank.jpg");
+background = imread("background.jpg");
 foreground = imread("well_loc_7.jpg");
 im_holder = impross(background, foreground);
 well_loc_7 = im_holder.bw;
 
-background = imread("well_loc_blank.jpg");
+background = imread("background.jpg");
 foreground = imread("well_loc_8.jpg");
 im_holder = impross(background, foreground);
 well_loc_8 = im_holder.bw;
@@ -80,22 +81,23 @@ for i = 1:num
             % checks for which color the centoid is
             % checks for red
             if red == 255
-                gamestate.well_color(j) = 1;
+                gamestate.well_color(j) = "red";
 
             elseif green == 255
-                gamestate.well_color(j) = 2;
+                gamestate.well_color(j) = "green";
 
             elseif blue == 255
-                gamestate.well_color(j) = 3;
+                gamestate.well_color(j) = "blue";
 
             elseif red == 200 && green == 200
-                gamestate.well_color(j) = 4;
+                gamestate.well_color(j) = "yellow";
 
             end
         end
     end
 end
 gamestate
+gamestate.well_color
 
 
 
