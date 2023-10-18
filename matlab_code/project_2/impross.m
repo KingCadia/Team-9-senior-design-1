@@ -1,6 +1,7 @@
 classdef impross
     %IMPROSS Summary of this class goes here
-    %   Detailed explanation goes here
+    %   this class takes in a background image and a foreground image then
+    %   makes a clean black and white image with the objects identified 
     
     properties
         background
@@ -15,6 +16,7 @@ classdef impross
     end
     
     methods
+        % constructor 
         function obj = impross(background, foreground)
             obj.background = background;
             obj.forground = foreground;
@@ -27,6 +29,7 @@ classdef impross
             obj.bw = bw;
         end
        
+        % does the color threshholding to enhance the colors
         function sub2 = imsubtraction(obj)
             %does the threshholding for the colors to brighten 
             sub2 = obj.subtraction;

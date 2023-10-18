@@ -2,7 +2,7 @@
 clc;
 % makes the obj that holds the compareing images
 background = imread('background.jpg');
-%foreground = imread('test.jpg');
+%foreground = imread('test1.jpg');
 im = impross(background, foreground);
 %%
 
@@ -13,58 +13,60 @@ gamestate.curret = foreground;
 gamestate.diffrence = im.subtraction;
 gamestate.noise_removal = im.bw;
 gamestate.pixel_locs = {[0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0]};
-% add in the key
+
 
 % gets the centoid locations
 stats = regionprops(im.bw, 'Centroid');
 num = size(stats);
 num = num(1);
 
-% gets the well loc bw image
+% gets the well loc bw image for the locations of each well
 background = imread("background.jpg");
-foreground = imread("well_loc_1.jpg");
-im_holder = impross(background, foreground);
+holder = imread("well_loc_1.jpg");
+im_holder = impross(background, holder);
 well_loc_1 = im_holder.bw;
 
 background = imread("background.jpg");
-foreground = imread("well_loc_2.jpg");
-im_holder = impross(background, foreground);
+holder = imread("well_loc_2.jpg");
+im_holder = impross(background, holder);
 well_loc_2 = im_holder.bw;
 
 background = imread("background.jpg");
-foreground = imread("well_loc_3.jpg");
-im_holder = impross(background, foreground);
+holder = imread("well_loc_3.jpg");
+im_holder = impross(background, holder);
 well_loc_3 = im_holder.bw;
 
 background = imread("background.jpg");
-foreground = imread("well_loc_4.jpg");
-im_holder = impross(background, foreground);
+holder = imread("well_loc_4.jpg");
+im_holder = impross(background, holder);
 well_loc_4 = im_holder.bw;
 
 background = imread("background.jpg");
-foreground = imread("well_loc_5.jpg");
-im_holder = impross(background, foreground);
+holder = imread("well_loc_5.jpg");
+im_holder = impross(background, holder);
 well_loc_5 = im_holder.bw;
 
 background = imread("background.jpg");
-foreground = imread("well_loc_6.jpg");
-im_holder = impross(background, foreground);
+holder = imread("well_loc_6.jpg");
+im_holder = impross(background, holder);
 well_loc_6 = im_holder.bw;
 
 background = imread("background.jpg");
-foreground = imread("well_loc_7.jpg");
-im_holder = impross(background, foreground);
+holder = imread("well_loc_7.jpg");
+im_holder = impross(background, holder);
 well_loc_7 = im_holder.bw;
 
 background = imread("background.jpg");
-foreground = imread("well_loc_8.jpg");
-im_holder = impross(background, foreground);
+holder = imread("well_loc_8.jpg");
+im_holder = impross(background, holder);
 well_loc_8 = im_holder.bw;
 
+% makes an array of images of each well location
 well_locs = {well_loc_1, well_loc_2, well_loc_3, well_loc_4, well_loc_5, well_loc_6, ...
     well_loc_7, well_loc_8};
 
-
+% loop that looks through all centriod locations found and sees what well
+% location they are in and what color they are in
 for i = 1:num
     x = floor(stats(i).Centroid(2));
     y = floor(stats(i).Centroid(1));
@@ -82,13 +84,16 @@ for i = 1:num
             % checks for red
             if red == 255
                 gamestate.well_color(j) = "red";
-
+            
+            % checks for green
             elseif green == 255
                 gamestate.well_color(j) = "green";
-
+            
+            % checks for blue
             elseif blue == 255
                 gamestate.well_color(j) = "blue";
 
+            % checks for yellow
             elseif red == 200 && green == 200
                 gamestate.well_color(j) = "yellow";
 
@@ -96,6 +101,8 @@ for i = 1:num
         end
     end
 end
+
+% displays information
 gamestate
 gamestate.well_color
 

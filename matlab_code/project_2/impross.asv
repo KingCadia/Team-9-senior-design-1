@@ -1,6 +1,7 @@
 classdef impross
     %IMPROSS Summary of this class goes here
-    %   Detailed explanation goes here
+    %   this class takes in a background image and a foreground image then
+    %   makes a clean black and white image with the objects identified 
     
     properties
         background
@@ -22,7 +23,6 @@ classdef impross
             sub = 255 - (background - foreground);
             obj.subtraction = sub;
             sub2 = obj.imsubtraction();
-            imshow(sub2);
             obj.subtraction2 = sub2;
             bw = obj.imgetbw();
             obj.bw = bw;
@@ -43,6 +43,16 @@ classdef impross
                             sub2(i,j,3) = 0;
                     end
 
+                    % checks for blue
+                    if ((obj.subtraction(i,j,1) <= 160 && obj.subtraction(i,j,1) >= 100) && ...
+                       (obj.subtraction(i,j,2) <= 180 && obj.subtraction(i, j, 2) >= 120) && ...
+                       (obj.subtraction(i,j,3) <= 240 && obj.subtraction(i, j, 3) >= 100))
+                            % detected a blue
+                            sub2(i,j,1) = 0;
+                            sub2(i,j,2) = 0;
+                            sub2(i,j,3) = 255;
+                    end
+                    
                     % checks for green
                     if ((obj.subtraction(i, j, 1) >= 40) && (obj.subtraction(i, j, 1) <= 140) ...
                        && (obj.subtraction(i, j, 2) >= 100) && (obj.subtraction(i, j, 2) <= 220) ...
@@ -52,17 +62,6 @@ classdef impross
                             sub2(i,j,2) = 255;
                             sub2(i,j,3) = 0;
                     end
-
-                    % checks for blue
-                    if ((obj.subtraction(i,j,1) <= 140 && obj.subtraction(i,j,1) >= 100) && ...
-                       (obj.subtraction(i,j,2) <= 160 && obj.subtraction(i, j, 2) >= 100) && ...
-                       (obj.subtraction(i,j,3) <= 220 && obj.subtraction(i, j, 3) >= 100))
-                            % detected a blue
-                            sub2(i,j,1) = 0;
-                            sub2(i,j,2) = 0;
-                            sub2(i,j,3) = 255;
-                    end
-
                     % checks for yellow
                     if ((obj.subtraction(i,j,1) <= 255 && obj.subtraction(i,j,1) >= 220) && ...
                        (obj.subtraction(i,j,2) <= 255 && obj.subtraction(i,j,2) >= 240) && ...
