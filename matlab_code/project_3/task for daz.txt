@@ -31,4 +31,5 @@ notes:
 	the final black and white image is bw subtraction and subtraction2 are intermediate images and subtraction2 is the image that
 	you will get final colors when you get the centroid locations
 
+	Work in your branch do not work in main
 
