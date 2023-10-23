@@ -14,7 +14,6 @@ gamestate.diffrence = im.subtraction;
 gamestate.noise_removal = im.bw;
 gamestate.pixel_locs = {[0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0], [0,0]};
 
-
 % gets the centoid locations
 stats = regionprops(im.bw, 'Centroid');
 num = size(stats);
