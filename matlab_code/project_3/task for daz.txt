@@ -1,0 +1,35 @@
+task for Daz
+
+Go into project 2 and add on to the code so the software can pick out shapes.
+
+The software can already pick out color and centriod location.
+
+when you have the shape color and centroid location store all three of these in a struct called gameobject.
+ie: 
+	gameobject.shape
+	gameobject.color
+	gameobject.location
+
+Then store all picked out shapes in a array of structs.
+
+The code to get a clean black and white image is in the class impross
+you will have to add on new proporties to the class and add on new methods to get the shape and centroid location
+
+notes: 
+	the code to get the centroid locations is not in impross it is in the main file impross only takes the background image and
+	foreground image and processes them into a clean black and white image where centroids can be found
+	
+	the system is very sensitive to lighting conditions so be careful of that do not light the shot with anything other than the lights 
+	already turned on in the lab
+	
+	the impross class enhances each color so in the image subtraction2 the colors will go as follows:
+	red = 255, 0, 0
+	green = 0, 255, 0
+	blue = 0, 0, 255
+	yellow = 200, 200, 50
+
+	the final black and white image is bw subtraction and subtraction2 are intermediate images and subtraction2 is the image that
+	you will get final colors when you get the centroid locations
+
+	Work in your branch do not work in main
+
