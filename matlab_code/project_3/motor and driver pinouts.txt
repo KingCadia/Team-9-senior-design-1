@@ -12,5 +12,5 @@ motor black = GND
 motor green = Hall sensor GND
 motor blue = Hall sensor Vcc
 motor yellow = Hall sensor A Vout
-motor blue = Hall sensor B Vout
+motor white = Hall sensor B Vout
 
