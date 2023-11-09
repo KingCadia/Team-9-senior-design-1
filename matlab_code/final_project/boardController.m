@@ -25,6 +25,7 @@ classdef boardController < handle
             obj.mega = arduino("COM3", "MEGA2560");
             obj.motor_vert = motor(obj.mega, "D4", "D5", "D6", .0000625, 50, "D7", "D8");
             obj.motor_horz = motor(obj.mega, "D11", "D12", "D13", .0000625, 50, "D14", "D15");
+            
         end
         
         % grabs the piece assosiated with the player passed to the function
@@ -53,8 +54,6 @@ classdef boardController < handle
             
         end
         
-        
-
     end
     
     % private methods 

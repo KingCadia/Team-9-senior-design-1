@@ -59,15 +59,13 @@ classdef motor
             writeDigitalPin(obj.Mega, obj.Step_pin, 0);
             
             % gonna try to do the PID stuff
-%             traveled = 0;
-%             % write the pwm voltage
-%             readDigitalPin(obj.Mega, obj.hall_sensor_1);
-%             while traveled < degrees
-%                 c = clock(6);
-%                 
-%                 
-%             end
-%             
+            traveled = 0;
+            % write the pwm voltage
+            
+            while traveled < degrees
+                c = clock(6);
+            end
+            
             % trying to do a duty cycle type thing
 %             on_time = 0;
 %             total_time = degrees * obj.seconds_per_degree;
