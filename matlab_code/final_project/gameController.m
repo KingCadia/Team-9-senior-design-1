@@ -41,9 +41,50 @@ classdef gameController < handle
         
         % makes move for the computer
         function errorCode = makeMoveCom(obj)
-            
+            % checks if the game can be won
+            for i = 1:3
+                for j = 1:3
+                    % checks if a piece can be placed at (i, j)
+                    if obj.board(i, j) == '0'
+                        % copies board and places piece to check if the
+                        % game can be won
+                        cpyBoard = obj.board;
+                        cpyBoard(i, j) = obj.ComPiece;
+                        won = obj.isWon(cpyBoard, obj.ComPiece);
+                        if won == 1
+                            % grab piece, moves to (i, j), and drops piece 
+                        end
+                    end
+                end
+            end
         end
         
+        % checks to see if the game is won
+        function won = isWon(obj, board, piece)
+            % really inefficent way to code this but its whatever
+            % horizontals 
+            if board(1, 1) == piece && board(1, 2) == piece && board(1, 3) == piece
+                won = 1;
+            elseif board(2, 1) == piece && board(2, 2) == piece && board(2, 3) == piece
+                won = 1;
+            elseif board(3, 1) == piece && board(3, 2) == piece && board(3, 3) == piece
+                won = 1;
+            % verticals
+            elseif board(1, 1) == piece && board(2, 1) == piece && board(3, 1) == piece
+                won = 1;
+            elseif board(1, 2) == piece && board(2, 2) == piece && board(3, 2) == piece
+                won = 1;
+            elseif board(1, 3) == piece && board(2, 3) == piece && board(3, 3) == piece
+                won = 1;
+            % diagonals
+            elseif board(1, 1) == piece && board(2, 2) == piece && board(3, 3) == piece
+                won = 1;
+            elseif board(1, 3) == piece && board(2, 2) == piece && board(3, 1) == piece
+                won = 1;
+            else
+                won = 0;
+            end
+        end
         
     end
 end
