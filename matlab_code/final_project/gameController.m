@@ -105,8 +105,15 @@ classdef gameController < handle
         function [x, y] = miniMax(obj, piece)
             % makes the miniMax tree
             boardCpy = obj.board;
+            tre = obj.makeTree(boardCpy, obj.emptySpaces, obj.ComPiece, 0,0);
+            % add in the if emptySpaces < 3 code here later
+            % gets the best move the player can make
+            if obj.playerPiece == 'X'
+                [x, y] = tre.getMin();
+            else
+                [x, y] = tre.getMax();
+            end
             
-
 
         end
         % recurrsive function that returns the tree resulting from the
