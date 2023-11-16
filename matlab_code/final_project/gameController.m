@@ -14,14 +14,14 @@ classdef gameController < handle
     
     methods(Access = public)
         function obj = gameController(player, computer)
-            obj.boardCon = boardController();
+            %obj.boardCon = boardController();
             % note remember to put in the camera
             obj.board = ['0', '0', '0'; '0', '0', '0'; '0', '0', '0'];
             obj.playerPiece = player;
             obj.ComPiece = computer;
             webcamName = webcamlist;
-            obj.cam = webcam(webcamName(3));
-            obj.background = snapshot(obj.cam);
+            %obj.cam = webcam(webcamName(3));
+            %obj.background = snapshot(obj.cam);
             obj.emptySpaces = 9;
         end
         
@@ -42,6 +42,20 @@ classdef gameController < handle
             end
         end
         
+        % function that makes the move for the play completely in software
+        % for testing
+        function errorCode = makeMovePlayerTest(obj, x, y)
+            % checks if the move is legal
+            if obj.board(x, y) ~= '0' || obj.board(x, y) == obj.ComPiece
+                errorCode = -1;
+                return;
+            else
+                obj.board(x, y) = obj.playerPiece;
+                obj.emptySpaces = obj.emptySpaces - 1;
+                errorCode = 1;
+                return;
+            end
+        end
         % makes move for the computer
         function errorCode = makeMoveCom(obj)
             % checks if the game can be won
@@ -67,8 +81,14 @@ classdef gameController < handle
                     end
                 end
             end
-            % uses algorithm to make the best avalible move
+        end
             
+            % makes move for the computer
+        function errorCode = makeMoveComTest(obj)
+            % makes the minimax tree
+            [x, y] = obj.miniMax(obj.ComPiece);
+            obj.board(x, y) = obj.ComPiece;
+            errorCode = 1;
         end
         
         % checks to see if the game is won
@@ -109,11 +129,12 @@ classdef gameController < handle
             % add in the if emptySpaces < 3 code here later
             % gets the best move the player can make
             if obj.playerPiece == 'X'
-                [x, y] = tre.getMin();
+                node = tre.getMin();
             else
-                [x, y] = tre.getMax();
+                node = tre.getMax();
             end
-            
+            x = node.i;
+            y = node.j;
 
         end
         % recurrsive function that returns the tree resulting from the

@@ -5,32 +5,45 @@ classdef treeNode
     properties
         numberOfNodes
         Nodes
-        ij
+        i
+        j
         board
         weight
     end
     
     methods
-        function obj = treeNode(board, i, j)
+        function obj = treeNode(board, x, y)
             %TREE Construct an instance of this class
             %   Detailed explanation goes here
             obj.numberOfNodes = 0;
             obj.board = board;
-            obj.ij = [i, j];
+            obj.i = x;
+            obj.j = y;
             obj.weight = 0;
-            obj.Nodes = [];
+            % inits the node array
+            emptyBoard = ['0', '0', '0'; '0', '0', '0'; '0', '0', '0'];
+            if x ~= -1
+                tre1 = treeNode(emptyBoard, -1, -1);
+                tre2 = treeNode(emptyBoard, -1, -1);
+                tre3 = treeNode(emptyBoard, -1, -1);
+                tre4 = treeNode(emptyBoard, -1, -1);
+                tre5 = treeNode(emptyBoard, -1, -1);
+                tre6 = treeNode(emptyBoard, -1, -1);
+                tre7 = treeNode(emptyBoard, -1, -1);
+                tre8 = treeNode(emptyBoard, -1, -1);
+                tre9 = treeNode(emptyBoard, -1, -1);
+            end
         end
         
         % adds a node to this node
-        function add(obj, node)
-            newNode = treeNode(node.board, node.i, node.j);
+        function add(obj, board, i, j)
             % case for there being no nodes on this subtree
             if obj.numberOfNodes == 0
                 obj.numberOfNodes = 1;
-                obj.Nodes(obj.numberOfNodes) = newNode;
+                obj.Nodes(obj.numberOfNodes) = treeNode(board, i, j);
             else
                 obj.numberOfNodes = obj.numberOfNodes + 1;
-                obj.Nodes(obj.numberOfNodes) = newNode;
+                obj.Nodes(obj.numberOfNodes) = treeNode(board, i, j);
             end
             return
         end
