@@ -8,16 +8,17 @@ game.makeMoveComTest();
 %% testing the tree data structure
 clear 
 clc
-board = ['0', '0', '0'; '0', '0', '0'; '0', '0', '0'];
-tre = treeNode(board, 0, 0);
-board(2, 2) = 'X';
-tre.add(board, 2, 2);
+board = ['O', 'O', 'X'; '0', 'X', '0'; '0', '0', '0'];
+%game.board = board; 
+game = gameController('X', 'O');
+game.makeMoveComTest();
+game.board
 
 %% gonna figure out how to do an array of objects
 clear 
 clc
 board = ['0', '0', '0'; '0', '0', '0'; '0', '0', '0'];
 tre1 = treeNode(board, 0, 0);
-tre2 = treeNode(board, 0, 0);
-array(1) = tre1;
-array(2) = tre2;
+tre2 = treeNode(board, 9, 1);
+tre1 = tre1.add(tre2);
+% array of trees now works

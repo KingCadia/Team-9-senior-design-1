@@ -19,7 +19,7 @@ classdef gameController < handle
             obj.board = ['0', '0', '0'; '0', '0', '0'; '0', '0', '0'];
             obj.playerPiece = player;
             obj.ComPiece = computer;
-            webcamName = webcamlist;
+            %webcamName = webcamlist;
             %obj.cam = webcam(webcamName(3));
             %obj.background = snapshot(obj.cam);
             obj.emptySpaces = 9;
@@ -128,11 +128,26 @@ classdef gameController < handle
             tre = obj.makeTree(boardCpy, obj.emptySpaces, obj.ComPiece, 0,0);
             % add in the if emptySpaces < 3 code here later
             % gets the best move the player can make
-            if obj.playerPiece == 'X'
-                node = tre.getMin();
+            if obj.playerPiece == 'O'
+                tre.getMin();
+                % finds the smallest node in the direct subtree
+                weight = Inf;
+                for i = 1:tre.numberOfNodes
+                    if tre.Nodes(i).weight < weight;
+                        node = tre.Nodes(i);
+                    end
+                end
             else
-                node = tre.getMax();
+                tre.getMax();
+                weight = -Inf;
+                % finds the biggest node in the direct subtree
+                for i = 1:tre.numberOfNodes
+                    if tre.Nodes(i).weight > weight;
+                        node = tre.Nodes(i);
+                    end
+                end
             end
+            
             x = node.i;
             y = node.j;
 
@@ -154,13 +169,13 @@ classdef gameController < handle
                                % the game can be won with that move
                                leafNode = treeNode(cpyBoard, i, j);
                                leafNode.weight = (emptySpaces - 1) * -1;
-                               miniMaxTree.add(leafNode);
+                               miniMaxTree = miniMaxTree.add(leafNode);
                            else
                                % the game could not be won with the current
                                % move
                                % adds a sub-tree onto the current tree as a
                                % node
-                               miniMaxTree.add(obj.makeTree(cpyBoard, emptySpaces - 1, 'O', i, j));
+                               miniMaxTree = miniMaxTree.add(obj.makeTree(cpyBoard, emptySpaces - 1, 'O', i, j));
                            end
                         end
                     else
@@ -173,13 +188,13 @@ classdef gameController < handle
                                % the game can be won with that move
                                leafNode = treeNode(cpyBoard, i, j);
                                leafNode.weight = (emptySpaces - 1);
-                               miniMaxTree.add(leafNode);
+                               miniMaxTree = miniMaxTree.add(leafNode);
                            else
                                % the game could not be won with the current
                                % move
                                % adds a sub-tree onto the current tree as a
                                % node
-                               miniMaxTree.add(obj.makeTree(cpyBoard, emptySpaces - 1, 'X', i, j));
+                               miniMaxTree = miniMaxTree.add(obj.makeTree(cpyBoard, emptySpaces - 1, 'X', i, j));
                            end
                         end
                     end
