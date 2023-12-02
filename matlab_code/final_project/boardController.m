@@ -25,23 +25,27 @@ classdef boardController < handle
             obj.mega = arduino("COM3", "MEGA2560");
             obj.motor_vert = motor(obj.mega, "D4", "D5", "D6", .0000625, 50, "D7", "D8");
             obj.motor_horz = motor(obj.mega, "D11", "D12", "D13", .0000625, 50, "D14", "D15");
-            
         end
         
         % grabs the piece assosiated with the player passed to the function
         function grabPiece(obj, player)
-            
+            writeDigitalPin(obj.mega, "D25", 1);
         end
         
         % moves the piece placer to the location indicated by the row and
         % col inputs
         function moveTo(obj, row, col)
-            
+            if row == -1
+                % picks goes to get a new piece
+                
+            else
+                
+            end
         end
         
         % drops the piece that the actuator is currently holding
         function dropPiece(obj)
-            
+            writeDigitalPin(obj.mega, "D25", 0);
         end
         
         % returns the current row location
@@ -54,11 +58,15 @@ classdef boardController < handle
             
         end
         
+        
+
     end
     
     % private methods 
     methods (Access = private, Hidden = true)
-        
+        function moveWellLoc(wellLocs)
+            
+        end
     end
 end
 

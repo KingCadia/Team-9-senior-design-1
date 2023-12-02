@@ -1,4 +1,4 @@
-classdef gameController < handle
+classdef gamecontroller < handle
     % GAMECONTROLLER
     % make the decisions on where to move the pieces
     % for mini max X is mini O is max
@@ -13,16 +13,25 @@ classdef gameController < handle
     end
     
     methods(Access = public)
-        function obj = gameController(player, computer)
+        function obj = gamecontroller(player, computer, board)
             %obj.boardCon = boardController();
             % note remember to put in the camera
-            obj.board = ['0', '0', '0'; '0', '0', '0'; '0', '0', '0'];
+            obj.board = board;
             obj.playerPiece = player;
             obj.ComPiece = computer;
             %webcamName = webcamlist;
             %obj.cam = webcam(webcamName(3));
             %obj.background = snapshot(obj.cam);
-            obj.emptySpaces = 9;
+            % finds the number of empty spaces
+            obj.emptySpaces = 0
+            for i = 1:3
+                for j = 1:3
+                    if obj.board(i, j) == '0'
+                        obj.emptySpaces = obj.emptySpaces + 1;
+                    end
+                end
+            end
+            
         end
         
         % makes move for the player if the move is legal will return 1 if
@@ -85,9 +94,43 @@ classdef gameController < handle
             
             % makes move for the computer
         function errorCode = makeMoveComTest(obj)
+            % plays defensivly
+            for i = 1:3
+                for j = 1:3
+                    cpyBoard = obj.board;
+                    if cpyBoard(i, j) == '0'
+                        % place player piece and see if the player wins
+                        cpyBoard(i, j) = obj.playerPiece;
+                        if obj.isWon(cpyBoard, obj.playerPiece)
+                            % the player can win with that move so make
+                            % that move
+                            obj.board(i, j) = obj.ComPiece;
+                            obj.emptySpaces = obj.emptySpaces - 1;
+                            return;
+                        end 
+                    end
+                end
+            end
+
+            % makes random move if needed
+            if obj.emptySpaces > 5
+                % makes random move
+                moveMade = 0;
+                while moveMade == 0
+                    x = randi(3);
+                    y = randi(3);
+                    if obj.board(x, y) == '0'
+                        obj.board(x, y) = obj.ComPiece;
+                        obj.emptySpaces = obj.emptySpaces - 1;
+                        return;
+                    end
+                end
+            end
+                        
             % makes the minimax tree
             [x, y] = obj.miniMax(obj.ComPiece);
             obj.board(x, y) = obj.ComPiece;
+            obj.emptySpaces = obj.emptySpaces - 1;
             errorCode = 1;
         end
         
@@ -133,17 +176,22 @@ classdef gameController < handle
                 % finds the smallest node in the direct subtree
                 weight = Inf;
                 for i = 1:tre.numberOfNodes
-                    if tre.Nodes(i).weight < weight;
-                        node = tre.Nodes(i);
+                    holderNode = tre.Nodes(i);
+                    holderNode.getMin();
+                    if holderNode.weight < weight
+                        node = holderNode;
+                        weight = holderNode.weight;
                     end
                 end
             else
-                tre.getMax();
                 weight = -Inf;
                 % finds the biggest node in the direct subtree
                 for i = 1:tre.numberOfNodes
-                    if tre.Nodes(i).weight > weight;
-                        node = tre.Nodes(i);
+                    holderNode = tre.Nodes(i);
+                    holderNode.getMax();
+                    if holderNode.weight > weight
+                        node = holderNode;
+                        weight = holderNode.weight;
                     end
                 end
             end
@@ -206,4 +254,6 @@ classdef gameController < handle
     end
 
 end
+
+
 
