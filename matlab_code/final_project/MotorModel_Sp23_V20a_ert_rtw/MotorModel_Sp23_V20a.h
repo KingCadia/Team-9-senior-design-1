@@ -7,9 +7,9 @@
  *
  * Code generation for model "MotorModel_Sp23_V20a".
  *
- * Model version              : 8
+ * Model version              : 10
  * Simulink Coder version : 9.3 (R2020a) 18-Nov-2019
- * C source code generated on : Sun Dec  3 17:18:43 2023
+ * C source code generated on : Mon Dec  4 09:31:48 2023
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -42,8 +42,8 @@
 /* Shared type includes */
 #include "multiword_types.h"
 #include "MW_target_hardware_resources.h"
-#include "rtGetInf.h"
 #include "rt_nonfinite.h"
+#include "rtGetInf.h"
 
 /* Macros for accessing real-time model data structure */
 #ifndef rtmGetContStateDisabled
@@ -174,58 +174,90 @@
 # define rtmGetTPtr(rtm)               ((rtm)->Timing.t)
 #endif
 
-/* Block states (default storage) for system '<S1>/Motor Direction1' */
+/* Block states (default storage) for system '<S3>/Motor Direction1' */
 typedef struct {
-  int8_T MotorDirection1_SubsysRanBC;  /* '<S1>/Motor Direction1' */
+  int8_T MotorDirection1_SubsysRanBC;  /* '<S3>/Motor Direction1' */
 } DW_MotorDirection1_MotorModel_T;
 
 /* Block signals (default storage) */
 typedef struct {
+  real_T ProportionalGain;             /* '<S41>/Proportional Gain' */
+  real_T IntegralGain;                 /* '<S33>/Integral Gain' */
+  real_T DerivativeGain_c;             /* '<S78>/Derivative Gain' */
+  real_T FilterCoefficient_i;          /* '<S87>/Filter Coefficient' */
+  real_T ProportionalGain_p;           /* '<S89>/Proportional Gain' */
+  real_T IntegralGain_n;               /* '<S81>/Integral Gain' */
+  real_T sampleTime;
+  real_T Abs;                          /* '<S4>/Abs' */
+  real_T ErrorSignal;                  /* '<Root>/Sum2' */
   int64m_T angular_positionrelative_countC;
-  /* '<S1>/angular_position =  [relative_count//COUNTS_PER_REV] *360 degrees' */
-  real_T ProportionalGain;             /* '<S42>/Proportional Gain' */
-  real_T DerivativeGain;               /* '<S31>/Derivative Gain' */
-  real_T FilterCoefficient;            /* '<S40>/Filter Coefficient' */
-  real_T IntegralGain;                 /* '<S34>/Integral Gain' */
-  int32_T MATLABSystem;                /* '<S1>/MATLAB System' */
+  /* '<S3>/angular_position =  [relative_count//COUNTS_PER_REV] *360 degrees' */
+  int64m_T angular_positionrelative_coun_h;
+  /* '<S4>/angular_position =  [relative_count//COUNTS_PER_REV] *360 degrees' */
+  real_T DerivativeGain;               /* '<S30>/Derivative Gain' */
+  real_T FilterCoefficient;            /* '<S39>/Filter Coefficient' */
+  int32_T MATLABSystem;                /* '<S4>/MATLAB System' */
+  int32_T MATLABSystem_b;              /* '<S3>/MATLAB System' */
 } B_MotorModel_Sp23_V20a_T;
 
 /* Block states (default storage) for system '<Root>' */
 typedef struct {
-  codertarget_arduinobase_inter_T obj; /* '<S1>/Enable' */
-  Encoder_arduino_MotorModel_Sp_T obj_m;/* '<S1>/MATLAB System' */
-  j_codertarget_arduinobase_int_T gobj_1;/* '<S1>/Enable' */
-  j_codertarget_arduinobase_int_T gobj_2;/* '<S1>/Enable' */
-  j_codertarget_arduinobase_int_T gobj_3;/* '<S1>/Enable' */
-  j_codertarget_arduinobase_int_T gobj_4;/* '<S1>/Enable' */
-  codertarget_arduinobase_block_T obj_l;/* '<S1>/Driver In1' */
-  codertarget_arduinobase_block_T obj_f;/* '<S1>/Driver In2' */
-  int8_T ChooseDirection_ActiveSubsystem;/* '<S1>/Choose Direction' */
-  boolean_T objisempty;                /* '<S1>/MATLAB System' */
-  boolean_T objisempty_k;              /* '<S1>/Enable' */
-  boolean_T objisempty_b;              /* '<S1>/Driver In1' */
-  boolean_T objisempty_e;              /* '<S1>/Driver In2' */
-  DW_MotorDirection1_MotorModel_T ConstantPosition;/* '<S1>/Constant Position' */
-  DW_MotorDirection1_MotorModel_T MotorDirection2;/* '<S1>/Motor Direction 2' */
-  DW_MotorDirection1_MotorModel_T MotorDirection1;/* '<S1>/Motor Direction1' */
+  codertarget_arduinobase_inter_T obj; /* '<S4>/Enable' */
+  codertarget_arduinobase_inter_T obj_b;/* '<S3>/Enable' */
+  Encoder_arduino_MotorModel_Sp_T obj_p;/* '<S4>/MATLAB System' */
+  Encoder_arduino_MotorModel_Sp_T obj_m;/* '<S3>/MATLAB System' */
+  j_codertarget_arduinobase_int_T gobj_1;/* '<S4>/Enable' */
+  j_codertarget_arduinobase_int_T gobj_2;/* '<S4>/Enable' */
+  j_codertarget_arduinobase_int_T gobj_3;/* '<S4>/Enable' */
+  j_codertarget_arduinobase_int_T gobj_4;/* '<S4>/Enable' */
+  j_codertarget_arduinobase_int_T gobj_1_b;/* '<S3>/Enable' */
+  j_codertarget_arduinobase_int_T gobj_2_i;/* '<S3>/Enable' */
+  j_codertarget_arduinobase_int_T gobj_3_k;/* '<S3>/Enable' */
+  j_codertarget_arduinobase_int_T gobj_4_d;/* '<S3>/Enable' */
+  codertarget_arduinobase_block_T obj_h;/* '<S4>/Driver In1' */
+  codertarget_arduinobase_block_T obj_g;/* '<S4>/Driver In2' */
+  codertarget_arduinobase_block_T obj_l;/* '<S3>/Driver In1' */
+  codertarget_arduinobase_block_T obj_f;/* '<S3>/Driver In2' */
+  int8_T ChooseDirection_ActiveSubsystem;/* '<S3>/Choose Direction' */
+  int8_T ChooseDirection_ActiveSubsyst_g;/* '<S4>/Choose Direction' */
+  boolean_T objisempty;                /* '<S4>/MATLAB System' */
+  boolean_T objisempty_f;              /* '<S4>/Enable' */
+  boolean_T objisempty_h;              /* '<S4>/Driver In1' */
+  boolean_T objisempty_m;              /* '<S4>/Driver In2' */
+  boolean_T objisempty_p;              /* '<S3>/MATLAB System' */
+  boolean_T objisempty_k;              /* '<S3>/Enable' */
+  boolean_T objisempty_b;              /* '<S3>/Driver In1' */
+  boolean_T objisempty_e;              /* '<S3>/Driver In2' */
+  DW_MotorDirection1_MotorModel_T ConstantPosition_f;/* '<S4>/Constant Position' */
+  DW_MotorDirection1_MotorModel_T MotorDirection2_c;/* '<S4>/Motor Direction 2' */
+  DW_MotorDirection1_MotorModel_T MotorDirection1_l;/* '<S4>/Motor Direction1' */
+  DW_MotorDirection1_MotorModel_T ConstantPosition;/* '<S3>/Constant Position' */
+  DW_MotorDirection1_MotorModel_T MotorDirection2;/* '<S3>/Motor Direction 2' */
+  DW_MotorDirection1_MotorModel_T MotorDirection1;/* '<S3>/Motor Direction1' */
 } DW_MotorModel_Sp23_V20a_T;
 
 /* Continuous states (default storage) */
 typedef struct {
-  real_T Integrator_CSTATE;            /* '<S37>/Integrator' */
-  real_T Filter_CSTATE;                /* '<S32>/Filter' */
+  real_T Filter_CSTATE;                /* '<S31>/Filter' */
+  real_T Integrator_CSTATE;            /* '<S36>/Integrator' */
+  real_T Filter_CSTATE_m;              /* '<S79>/Filter' */
+  real_T Integrator_CSTATE_k;          /* '<S84>/Integrator' */
 } X_MotorModel_Sp23_V20a_T;
 
 /* State derivatives (default storage) */
 typedef struct {
-  real_T Integrator_CSTATE;            /* '<S37>/Integrator' */
-  real_T Filter_CSTATE;                /* '<S32>/Filter' */
+  real_T Filter_CSTATE;                /* '<S31>/Filter' */
+  real_T Integrator_CSTATE;            /* '<S36>/Integrator' */
+  real_T Filter_CSTATE_m;              /* '<S79>/Filter' */
+  real_T Integrator_CSTATE_k;          /* '<S84>/Integrator' */
 } XDot_MotorModel_Sp23_V20a_T;
 
 /* State disabled  */
 typedef struct {
-  boolean_T Integrator_CSTATE;         /* '<S37>/Integrator' */
-  boolean_T Filter_CSTATE;             /* '<S32>/Filter' */
+  boolean_T Filter_CSTATE;             /* '<S31>/Filter' */
+  boolean_T Integrator_CSTATE;         /* '<S36>/Integrator' */
+  boolean_T Filter_CSTATE_m;           /* '<S79>/Filter' */
+  boolean_T Integrator_CSTATE_k;       /* '<S84>/Integrator' */
 } XDis_MotorModel_Sp23_V20a_T;
 
 #ifndef ODE3_INTG
@@ -242,62 +274,105 @@ typedef struct {
 /* External outputs (root outports fed by signals with default storage) */
 typedef struct {
   int64m_T motorPos_Out;               /* '<Root>/motorPos_Out' */
+  int64m_T motorPos_Out1;              /* '<Root>/motorPos_Out1' */
 } ExtY_MotorModel_Sp23_V20a_T;
 
-/* Parameters for system: '<S1>/Motor Direction1' */
+/* Parameters for system: '<S3>/Motor Direction1' */
 struct P_MotorDirection1_MotorModel__T_ {
   real_T Constant_Value;               /* Expression: 1
-                                        * Referenced by: '<S5>/Constant'
+                                        * Referenced by: '<S103>/Constant'
                                         */
   real_T Constant1_Value;              /* Expression: 0
-                                        * Referenced by: '<S5>/Constant1'
+                                        * Referenced by: '<S103>/Constant1'
                                         */
 };
 
 /* Parameters (default storage) */
 struct P_MotorModel_Sp23_V20a_T_ {
   real_T PIDController_D;              /* Mask Parameter: PIDController_D
-                                        * Referenced by: '<S31>/Derivative Gain'
+                                        * Referenced by: '<S30>/Derivative Gain'
+                                        */
+  real_T PIDController1_D;             /* Mask Parameter: PIDController1_D
+                                        * Referenced by: '<S78>/Derivative Gain'
                                         */
   real_T PIDController_I;              /* Mask Parameter: PIDController_I
-                                        * Referenced by: '<S34>/Integral Gain'
+                                        * Referenced by: '<S33>/Integral Gain'
+                                        */
+  real_T PIDController1_I;             /* Mask Parameter: PIDController1_I
+                                        * Referenced by: '<S81>/Integral Gain'
                                         */
   real_T PIDController_InitialConditionF;
                               /* Mask Parameter: PIDController_InitialConditionF
-                               * Referenced by: '<S32>/Filter'
+                               * Referenced by: '<S31>/Filter'
+                               */
+  real_T PIDController1_InitialCondition;
+                              /* Mask Parameter: PIDController1_InitialCondition
+                               * Referenced by: '<S79>/Filter'
                                */
   real_T PIDController_InitialConditio_o;
                               /* Mask Parameter: PIDController_InitialConditio_o
-                               * Referenced by: '<S37>/Integrator'
+                               * Referenced by: '<S36>/Integrator'
+                               */
+  real_T PIDController1_InitialConditi_a;
+                              /* Mask Parameter: PIDController1_InitialConditi_a
+                               * Referenced by: '<S84>/Integrator'
                                */
   real_T PIDController_N;              /* Mask Parameter: PIDController_N
-                                        * Referenced by: '<S40>/Filter Coefficient'
+                                        * Referenced by: '<S39>/Filter Coefficient'
+                                        */
+  real_T PIDController1_N;             /* Mask Parameter: PIDController1_N
+                                        * Referenced by: '<S87>/Filter Coefficient'
                                         */
   real_T PIDController_P;              /* Mask Parameter: PIDController_P
-                                        * Referenced by: '<S42>/Proportional Gain'
+                                        * Referenced by: '<S41>/Proportional Gain'
+                                        */
+  real_T PIDController1_P;             /* Mask Parameter: PIDController1_P
+                                        * Referenced by: '<S89>/Proportional Gain'
                                         */
   real_T MATLABSystem_SampleTime;      /* Expression: 0.001
-                                        * Referenced by: '<S1>/MATLAB System'
+                                        * Referenced by: '<S3>/MATLAB System'
                                         */
-  real_T desiredPosition_Value;        /* Expression: 0
-                                        * Referenced by: '<Root>/desiredPosition'
+  real_T MATLABSystem_SampleTime_f;    /* Expression: 0.001
+                                        * Referenced by: '<S4>/MATLAB System'
+                                        */
+  real_T horzAngle_Value;              /* Expression: 0
+                                        * Referenced by: '<Root>/horzAngle'
                                         */
   real_T Saturation_UpperSat;          /* Expression: 5
-                                        * Referenced by: '<S1>/Saturation'
+                                        * Referenced by: '<S3>/Saturation'
                                         */
   real_T Saturation_LowerSat;          /* Expression: -5
-                                        * Referenced by: '<S1>/Saturation'
+                                        * Referenced by: '<S3>/Saturation'
                                         */
   real_T Gain_Gain;                    /* Expression: 255/3
-                                        * Referenced by: '<S1>/Gain'
+                                        * Referenced by: '<S3>/Gain'
+                                        */
+  real_T vertAngle_Value;              /* Expression: 0
+                                        * Referenced by: '<Root>/vertAngle'
+                                        */
+  real_T Saturation_UpperSat_e;        /* Expression: 5
+                                        * Referenced by: '<S4>/Saturation'
+                                        */
+  real_T Saturation_LowerSat_b;        /* Expression: -5
+                                        * Referenced by: '<S4>/Saturation'
+                                        */
+  real_T Gain_Gain_b;                  /* Expression: 255/3
+                                        * Referenced by: '<S4>/Gain'
                                         */
   int32_T angular_positionrelative_countC;
                           /* Computed Parameter: angular_positionrelative_countC
-                           * Referenced by: '<S1>/angular_position =  [relative_count//COUNTS_PER_REV] *360 degrees'
+                           * Referenced by: '<S3>/angular_position =  [relative_count//COUNTS_PER_REV] *360 degrees'
                            */
-  P_MotorDirection1_MotorModel__T ConstantPosition;/* '<S1>/Constant Position' */
-  P_MotorDirection1_MotorModel__T MotorDirection2;/* '<S1>/Motor Direction 2' */
-  P_MotorDirection1_MotorModel__T MotorDirection1;/* '<S1>/Motor Direction1' */
+  int32_T angular_positionrelative_coun_e;
+                          /* Computed Parameter: angular_positionrelative_coun_e
+                           * Referenced by: '<S4>/angular_position =  [relative_count//COUNTS_PER_REV] *360 degrees'
+                           */
+  P_MotorDirection1_MotorModel__T ConstantPosition_f;/* '<S4>/Constant Position' */
+  P_MotorDirection1_MotorModel__T MotorDirection2_c;/* '<S4>/Motor Direction 2' */
+  P_MotorDirection1_MotorModel__T MotorDirection1_l;/* '<S4>/Motor Direction1' */
+  P_MotorDirection1_MotorModel__T ConstantPosition;/* '<S3>/Constant Position' */
+  P_MotorDirection1_MotorModel__T MotorDirection2;/* '<S3>/Motor Direction 2' */
+  P_MotorDirection1_MotorModel__T MotorDirection1;/* '<S3>/Motor Direction1' */
 };
 
 /* Real-time Model Data Structure */
@@ -313,8 +388,8 @@ struct tag_RTM_MotorModel_Sp23_V20a_T {
   boolean_T zCCacheNeedsReset;
   boolean_T derivCacheNeedsReset;
   boolean_T CTOutputIncnstWithState;
-  real_T odeY[2];
-  real_T odeF[3][2];
+  real_T odeY[4];
+  real_T odeF[3][4];
   ODE3_IntgData intgData;
 
   /*
@@ -373,9 +448,6 @@ extern DW_MotorModel_Sp23_V20a_T MotorModel_Sp23_V20a_DW;
 /* External outputs (root outports fed by signals with default storage) */
 extern ExtY_MotorModel_Sp23_V20a_T MotorModel_Sp23_V20a_Y;
 
-/* External data declarations for dependent source files */
-extern const int64m_T MotorModel_Sp23_V20a_sfix64_En33_GND;/* int64m_T ground */
-
 /* Model entry point functions */
 extern void MotorModel_Sp23_V20a_initialize(void);
 extern void MotorModel_Sp23_V20a_step(void);
@@ -399,58 +471,111 @@ extern RT_MODEL_MotorModel_Sp23_V20a_T *const MotorModel_Sp23_V20a_M;
  * Here is the system hierarchy for this model
  *
  * '<Root>' : 'MotorModel_Sp23_V20a'
- * '<S1>'   : 'MotorModel_Sp23_V20a/Motor'
- * '<S2>'   : 'MotorModel_Sp23_V20a/PID Controller'
- * '<S3>'   : 'MotorModel_Sp23_V20a/Motor/Constant Position'
- * '<S4>'   : 'MotorModel_Sp23_V20a/Motor/Motor Direction 2'
- * '<S5>'   : 'MotorModel_Sp23_V20a/Motor/Motor Direction1'
- * '<S6>'   : 'MotorModel_Sp23_V20a/PID Controller/Anti-windup'
- * '<S7>'   : 'MotorModel_Sp23_V20a/PID Controller/D Gain'
- * '<S8>'   : 'MotorModel_Sp23_V20a/PID Controller/Filter'
- * '<S9>'   : 'MotorModel_Sp23_V20a/PID Controller/Filter ICs'
- * '<S10>'  : 'MotorModel_Sp23_V20a/PID Controller/I Gain'
- * '<S11>'  : 'MotorModel_Sp23_V20a/PID Controller/Ideal P Gain'
- * '<S12>'  : 'MotorModel_Sp23_V20a/PID Controller/Ideal P Gain Fdbk'
- * '<S13>'  : 'MotorModel_Sp23_V20a/PID Controller/Integrator'
- * '<S14>'  : 'MotorModel_Sp23_V20a/PID Controller/Integrator ICs'
- * '<S15>'  : 'MotorModel_Sp23_V20a/PID Controller/N Copy'
- * '<S16>'  : 'MotorModel_Sp23_V20a/PID Controller/N Gain'
- * '<S17>'  : 'MotorModel_Sp23_V20a/PID Controller/P Copy'
- * '<S18>'  : 'MotorModel_Sp23_V20a/PID Controller/Parallel P Gain'
- * '<S19>'  : 'MotorModel_Sp23_V20a/PID Controller/Reset Signal'
- * '<S20>'  : 'MotorModel_Sp23_V20a/PID Controller/Saturation'
- * '<S21>'  : 'MotorModel_Sp23_V20a/PID Controller/Saturation Fdbk'
- * '<S22>'  : 'MotorModel_Sp23_V20a/PID Controller/Sum'
- * '<S23>'  : 'MotorModel_Sp23_V20a/PID Controller/Sum Fdbk'
- * '<S24>'  : 'MotorModel_Sp23_V20a/PID Controller/Tracking Mode'
- * '<S25>'  : 'MotorModel_Sp23_V20a/PID Controller/Tracking Mode Sum'
- * '<S26>'  : 'MotorModel_Sp23_V20a/PID Controller/Tsamp - Integral'
- * '<S27>'  : 'MotorModel_Sp23_V20a/PID Controller/Tsamp - Ngain'
- * '<S28>'  : 'MotorModel_Sp23_V20a/PID Controller/postSat Signal'
- * '<S29>'  : 'MotorModel_Sp23_V20a/PID Controller/preSat Signal'
- * '<S30>'  : 'MotorModel_Sp23_V20a/PID Controller/Anti-windup/Passthrough'
- * '<S31>'  : 'MotorModel_Sp23_V20a/PID Controller/D Gain/Internal Parameters'
- * '<S32>'  : 'MotorModel_Sp23_V20a/PID Controller/Filter/Cont. Filter'
- * '<S33>'  : 'MotorModel_Sp23_V20a/PID Controller/Filter ICs/Internal IC - Filter'
- * '<S34>'  : 'MotorModel_Sp23_V20a/PID Controller/I Gain/Internal Parameters'
- * '<S35>'  : 'MotorModel_Sp23_V20a/PID Controller/Ideal P Gain/Passthrough'
- * '<S36>'  : 'MotorModel_Sp23_V20a/PID Controller/Ideal P Gain Fdbk/Disabled'
- * '<S37>'  : 'MotorModel_Sp23_V20a/PID Controller/Integrator/Continuous'
- * '<S38>'  : 'MotorModel_Sp23_V20a/PID Controller/Integrator ICs/Internal IC'
- * '<S39>'  : 'MotorModel_Sp23_V20a/PID Controller/N Copy/Disabled'
- * '<S40>'  : 'MotorModel_Sp23_V20a/PID Controller/N Gain/Internal Parameters'
- * '<S41>'  : 'MotorModel_Sp23_V20a/PID Controller/P Copy/Disabled'
- * '<S42>'  : 'MotorModel_Sp23_V20a/PID Controller/Parallel P Gain/Internal Parameters'
- * '<S43>'  : 'MotorModel_Sp23_V20a/PID Controller/Reset Signal/Disabled'
- * '<S44>'  : 'MotorModel_Sp23_V20a/PID Controller/Saturation/Passthrough'
- * '<S45>'  : 'MotorModel_Sp23_V20a/PID Controller/Saturation Fdbk/Disabled'
- * '<S46>'  : 'MotorModel_Sp23_V20a/PID Controller/Sum/Sum_PID'
- * '<S47>'  : 'MotorModel_Sp23_V20a/PID Controller/Sum Fdbk/Disabled'
- * '<S48>'  : 'MotorModel_Sp23_V20a/PID Controller/Tracking Mode/Disabled'
- * '<S49>'  : 'MotorModel_Sp23_V20a/PID Controller/Tracking Mode Sum/Passthrough'
- * '<S50>'  : 'MotorModel_Sp23_V20a/PID Controller/Tsamp - Integral/Passthrough'
- * '<S51>'  : 'MotorModel_Sp23_V20a/PID Controller/Tsamp - Ngain/Passthrough'
- * '<S52>'  : 'MotorModel_Sp23_V20a/PID Controller/postSat Signal/Forward_Path'
- * '<S53>'  : 'MotorModel_Sp23_V20a/PID Controller/preSat Signal/Forward_Path'
+ * '<S1>'   : 'MotorModel_Sp23_V20a/PID Controller'
+ * '<S2>'   : 'MotorModel_Sp23_V20a/PID Controller1'
+ * '<S3>'   : 'MotorModel_Sp23_V20a/horz motor'
+ * '<S4>'   : 'MotorModel_Sp23_V20a/vert motor'
+ * '<S5>'   : 'MotorModel_Sp23_V20a/PID Controller/Anti-windup'
+ * '<S6>'   : 'MotorModel_Sp23_V20a/PID Controller/D Gain'
+ * '<S7>'   : 'MotorModel_Sp23_V20a/PID Controller/Filter'
+ * '<S8>'   : 'MotorModel_Sp23_V20a/PID Controller/Filter ICs'
+ * '<S9>'   : 'MotorModel_Sp23_V20a/PID Controller/I Gain'
+ * '<S10>'  : 'MotorModel_Sp23_V20a/PID Controller/Ideal P Gain'
+ * '<S11>'  : 'MotorModel_Sp23_V20a/PID Controller/Ideal P Gain Fdbk'
+ * '<S12>'  : 'MotorModel_Sp23_V20a/PID Controller/Integrator'
+ * '<S13>'  : 'MotorModel_Sp23_V20a/PID Controller/Integrator ICs'
+ * '<S14>'  : 'MotorModel_Sp23_V20a/PID Controller/N Copy'
+ * '<S15>'  : 'MotorModel_Sp23_V20a/PID Controller/N Gain'
+ * '<S16>'  : 'MotorModel_Sp23_V20a/PID Controller/P Copy'
+ * '<S17>'  : 'MotorModel_Sp23_V20a/PID Controller/Parallel P Gain'
+ * '<S18>'  : 'MotorModel_Sp23_V20a/PID Controller/Reset Signal'
+ * '<S19>'  : 'MotorModel_Sp23_V20a/PID Controller/Saturation'
+ * '<S20>'  : 'MotorModel_Sp23_V20a/PID Controller/Saturation Fdbk'
+ * '<S21>'  : 'MotorModel_Sp23_V20a/PID Controller/Sum'
+ * '<S22>'  : 'MotorModel_Sp23_V20a/PID Controller/Sum Fdbk'
+ * '<S23>'  : 'MotorModel_Sp23_V20a/PID Controller/Tracking Mode'
+ * '<S24>'  : 'MotorModel_Sp23_V20a/PID Controller/Tracking Mode Sum'
+ * '<S25>'  : 'MotorModel_Sp23_V20a/PID Controller/Tsamp - Integral'
+ * '<S26>'  : 'MotorModel_Sp23_V20a/PID Controller/Tsamp - Ngain'
+ * '<S27>'  : 'MotorModel_Sp23_V20a/PID Controller/postSat Signal'
+ * '<S28>'  : 'MotorModel_Sp23_V20a/PID Controller/preSat Signal'
+ * '<S29>'  : 'MotorModel_Sp23_V20a/PID Controller/Anti-windup/Passthrough'
+ * '<S30>'  : 'MotorModel_Sp23_V20a/PID Controller/D Gain/Internal Parameters'
+ * '<S31>'  : 'MotorModel_Sp23_V20a/PID Controller/Filter/Cont. Filter'
+ * '<S32>'  : 'MotorModel_Sp23_V20a/PID Controller/Filter ICs/Internal IC - Filter'
+ * '<S33>'  : 'MotorModel_Sp23_V20a/PID Controller/I Gain/Internal Parameters'
+ * '<S34>'  : 'MotorModel_Sp23_V20a/PID Controller/Ideal P Gain/Passthrough'
+ * '<S35>'  : 'MotorModel_Sp23_V20a/PID Controller/Ideal P Gain Fdbk/Disabled'
+ * '<S36>'  : 'MotorModel_Sp23_V20a/PID Controller/Integrator/Continuous'
+ * '<S37>'  : 'MotorModel_Sp23_V20a/PID Controller/Integrator ICs/Internal IC'
+ * '<S38>'  : 'MotorModel_Sp23_V20a/PID Controller/N Copy/Disabled'
+ * '<S39>'  : 'MotorModel_Sp23_V20a/PID Controller/N Gain/Internal Parameters'
+ * '<S40>'  : 'MotorModel_Sp23_V20a/PID Controller/P Copy/Disabled'
+ * '<S41>'  : 'MotorModel_Sp23_V20a/PID Controller/Parallel P Gain/Internal Parameters'
+ * '<S42>'  : 'MotorModel_Sp23_V20a/PID Controller/Reset Signal/Disabled'
+ * '<S43>'  : 'MotorModel_Sp23_V20a/PID Controller/Saturation/Passthrough'
+ * '<S44>'  : 'MotorModel_Sp23_V20a/PID Controller/Saturation Fdbk/Disabled'
+ * '<S45>'  : 'MotorModel_Sp23_V20a/PID Controller/Sum/Sum_PID'
+ * '<S46>'  : 'MotorModel_Sp23_V20a/PID Controller/Sum Fdbk/Disabled'
+ * '<S47>'  : 'MotorModel_Sp23_V20a/PID Controller/Tracking Mode/Disabled'
+ * '<S48>'  : 'MotorModel_Sp23_V20a/PID Controller/Tracking Mode Sum/Passthrough'
+ * '<S49>'  : 'MotorModel_Sp23_V20a/PID Controller/Tsamp - Integral/Passthrough'
+ * '<S50>'  : 'MotorModel_Sp23_V20a/PID Controller/Tsamp - Ngain/Passthrough'
+ * '<S51>'  : 'MotorModel_Sp23_V20a/PID Controller/postSat Signal/Forward_Path'
+ * '<S52>'  : 'MotorModel_Sp23_V20a/PID Controller/preSat Signal/Forward_Path'
+ * '<S53>'  : 'MotorModel_Sp23_V20a/PID Controller1/Anti-windup'
+ * '<S54>'  : 'MotorModel_Sp23_V20a/PID Controller1/D Gain'
+ * '<S55>'  : 'MotorModel_Sp23_V20a/PID Controller1/Filter'
+ * '<S56>'  : 'MotorModel_Sp23_V20a/PID Controller1/Filter ICs'
+ * '<S57>'  : 'MotorModel_Sp23_V20a/PID Controller1/I Gain'
+ * '<S58>'  : 'MotorModel_Sp23_V20a/PID Controller1/Ideal P Gain'
+ * '<S59>'  : 'MotorModel_Sp23_V20a/PID Controller1/Ideal P Gain Fdbk'
+ * '<S60>'  : 'MotorModel_Sp23_V20a/PID Controller1/Integrator'
+ * '<S61>'  : 'MotorModel_Sp23_V20a/PID Controller1/Integrator ICs'
+ * '<S62>'  : 'MotorModel_Sp23_V20a/PID Controller1/N Copy'
+ * '<S63>'  : 'MotorModel_Sp23_V20a/PID Controller1/N Gain'
+ * '<S64>'  : 'MotorModel_Sp23_V20a/PID Controller1/P Copy'
+ * '<S65>'  : 'MotorModel_Sp23_V20a/PID Controller1/Parallel P Gain'
+ * '<S66>'  : 'MotorModel_Sp23_V20a/PID Controller1/Reset Signal'
+ * '<S67>'  : 'MotorModel_Sp23_V20a/PID Controller1/Saturation'
+ * '<S68>'  : 'MotorModel_Sp23_V20a/PID Controller1/Saturation Fdbk'
+ * '<S69>'  : 'MotorModel_Sp23_V20a/PID Controller1/Sum'
+ * '<S70>'  : 'MotorModel_Sp23_V20a/PID Controller1/Sum Fdbk'
+ * '<S71>'  : 'MotorModel_Sp23_V20a/PID Controller1/Tracking Mode'
+ * '<S72>'  : 'MotorModel_Sp23_V20a/PID Controller1/Tracking Mode Sum'
+ * '<S73>'  : 'MotorModel_Sp23_V20a/PID Controller1/Tsamp - Integral'
+ * '<S74>'  : 'MotorModel_Sp23_V20a/PID Controller1/Tsamp - Ngain'
+ * '<S75>'  : 'MotorModel_Sp23_V20a/PID Controller1/postSat Signal'
+ * '<S76>'  : 'MotorModel_Sp23_V20a/PID Controller1/preSat Signal'
+ * '<S77>'  : 'MotorModel_Sp23_V20a/PID Controller1/Anti-windup/Passthrough'
+ * '<S78>'  : 'MotorModel_Sp23_V20a/PID Controller1/D Gain/Internal Parameters'
+ * '<S79>'  : 'MotorModel_Sp23_V20a/PID Controller1/Filter/Cont. Filter'
+ * '<S80>'  : 'MotorModel_Sp23_V20a/PID Controller1/Filter ICs/Internal IC - Filter'
+ * '<S81>'  : 'MotorModel_Sp23_V20a/PID Controller1/I Gain/Internal Parameters'
+ * '<S82>'  : 'MotorModel_Sp23_V20a/PID Controller1/Ideal P Gain/Passthrough'
+ * '<S83>'  : 'MotorModel_Sp23_V20a/PID Controller1/Ideal P Gain Fdbk/Disabled'
+ * '<S84>'  : 'MotorModel_Sp23_V20a/PID Controller1/Integrator/Continuous'
+ * '<S85>'  : 'MotorModel_Sp23_V20a/PID Controller1/Integrator ICs/Internal IC'
+ * '<S86>'  : 'MotorModel_Sp23_V20a/PID Controller1/N Copy/Disabled'
+ * '<S87>'  : 'MotorModel_Sp23_V20a/PID Controller1/N Gain/Internal Parameters'
+ * '<S88>'  : 'MotorModel_Sp23_V20a/PID Controller1/P Copy/Disabled'
+ * '<S89>'  : 'MotorModel_Sp23_V20a/PID Controller1/Parallel P Gain/Internal Parameters'
+ * '<S90>'  : 'MotorModel_Sp23_V20a/PID Controller1/Reset Signal/Disabled'
+ * '<S91>'  : 'MotorModel_Sp23_V20a/PID Controller1/Saturation/Passthrough'
+ * '<S92>'  : 'MotorModel_Sp23_V20a/PID Controller1/Saturation Fdbk/Disabled'
+ * '<S93>'  : 'MotorModel_Sp23_V20a/PID Controller1/Sum/Sum_PID'
+ * '<S94>'  : 'MotorModel_Sp23_V20a/PID Controller1/Sum Fdbk/Disabled'
+ * '<S95>'  : 'MotorModel_Sp23_V20a/PID Controller1/Tracking Mode/Disabled'
+ * '<S96>'  : 'MotorModel_Sp23_V20a/PID Controller1/Tracking Mode Sum/Passthrough'
+ * '<S97>'  : 'MotorModel_Sp23_V20a/PID Controller1/Tsamp - Integral/Passthrough'
+ * '<S98>'  : 'MotorModel_Sp23_V20a/PID Controller1/Tsamp - Ngain/Passthrough'
+ * '<S99>'  : 'MotorModel_Sp23_V20a/PID Controller1/postSat Signal/Forward_Path'
+ * '<S100>' : 'MotorModel_Sp23_V20a/PID Controller1/preSat Signal/Forward_Path'
+ * '<S101>' : 'MotorModel_Sp23_V20a/horz motor/Constant Position'
+ * '<S102>' : 'MotorModel_Sp23_V20a/horz motor/Motor Direction 2'
+ * '<S103>' : 'MotorModel_Sp23_V20a/horz motor/Motor Direction1'
+ * '<S104>' : 'MotorModel_Sp23_V20a/vert motor/Constant Position'
+ * '<S105>' : 'MotorModel_Sp23_V20a/vert motor/Motor Direction 2'
+ * '<S106>' : 'MotorModel_Sp23_V20a/vert motor/Motor Direction1'
  */
 #endif                                 /* RTW_HEADER_MotorModel_Sp23_V20a_h_ */

@@ -31,8 +31,8 @@ ert_main.o: \
  C:/ProgramData/MATLAB/SupportPackages/R2020a/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/Arduino.h \
  C:/ProgramData/MATLAB/SupportPackages/R2020a/3P.instrset/arduinoide.instrset/hardware/arduino/avr/cores/arduino/binary.h \
  C:/ProgramData/MATLAB/SupportPackages/R2020a/3P.instrset/arduinoide.instrset/hardware/arduino/avr/variants/mega/pins_arduino.h \
- C:/Users/minec/Documents/Team-9-senior-design-1/matlab_code/final_project/MotorModel_Sp23_V20a_ert_rtw/rtGetInf.h \
  C:/Users/minec/Documents/Team-9-senior-design-1/matlab_code/final_project/MotorModel_Sp23_V20a_ert_rtw/rt_nonfinite.h \
+ C:/Users/minec/Documents/Team-9-senior-design-1/matlab_code/final_project/MotorModel_Sp23_V20a_ert_rtw/rtGetInf.h \
  C:/PROGRA~1/MATLAB/R2020a/toolbox/coder/xcp/src/target/slave/include/xcp.h \
  C:/PROGRA~1/MATLAB/R2020a/toolbox/coder/xcp/src/target/slave/common/xcp_common.h \
  C:/PROGRA~1/MATLAB/R2020a/toolbox/coder/xcp/src/target/slave/platform/include/xcp_platform.h \
@@ -100,9 +100,9 @@ C:/ProgramData/MATLAB/SupportPackages/R2020a/3P.instrset/arduinoide.instrset/har
 
 C:/ProgramData/MATLAB/SupportPackages/R2020a/3P.instrset/arduinoide.instrset/hardware/arduino/avr/variants/mega/pins_arduino.h:
 
-C:/Users/minec/Documents/Team-9-senior-design-1/matlab_code/final_project/MotorModel_Sp23_V20a_ert_rtw/rtGetInf.h:
-
 C:/Users/minec/Documents/Team-9-senior-design-1/matlab_code/final_project/MotorModel_Sp23_V20a_ert_rtw/rt_nonfinite.h:
+
+C:/Users/minec/Documents/Team-9-senior-design-1/matlab_code/final_project/MotorModel_Sp23_V20a_ert_rtw/rtGetInf.h:
 
 C:/PROGRA~1/MATLAB/R2020a/toolbox/coder/xcp/src/target/slave/include/xcp.h:
 

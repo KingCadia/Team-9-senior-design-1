@@ -7,9 +7,9 @@
  *
  * Code generation for model "MotorModel_Sp23_V20a".
  *
- * Model version              : 8
+ * Model version              : 10
  * Simulink Coder version : 9.3 (R2020a) 18-Nov-2019
- * C source code generated on : Sun Dec  3 17:18:43 2023
+ * C source code generated on : Mon Dec  4 09:31:48 2023
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -61,7 +61,7 @@ typedef struct tag_KPrkuOK6ssObybfxqijZPC codertarget_arduinobase_block_T;
 
 #endif                               /*typedef_codertarget_arduinobase_block_T*/
 
-/* Custom Type definition for MATLABSystem: '<S1>/Enable' */
+/* Custom Type definition for MATLABSystem: '<S4>/Enable' */
 #include "MW_SVD.h"
 #ifndef struct_tag_Vdrvk2IQsOqPlWl1GaayPG
 #define struct_tag_Vdrvk2IQsOqPlWl1GaayPG
@@ -150,7 +150,7 @@ typedef struct tag_ZksrEzekLFp3nSi7noWstB codertarget_arduinobase_inter_T;
 
 #endif                               /*typedef_codertarget_arduinobase_inter_T*/
 
-/* Parameters for system: '<S1>/Motor Direction1' */
+/* Parameters for system: '<S3>/Motor Direction1' */
 typedef struct P_MotorDirection1_MotorModel__T_ P_MotorDirection1_MotorModel__T;
 
 /* Parameters (default storage) */

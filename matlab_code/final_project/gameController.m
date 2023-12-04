@@ -41,10 +41,8 @@ classdef gamecontroller < handle
             if obj.board(x, y) ~= '0' || obj.board(x, y) == obj.ComPiece
                 errorCode = -1;
             else
-                % use 1D indexing of a 2D arrayx, y
-                obj.boardCon.grabPiece("player");
-                obj.boardCon.move(x, y);
-                obj.boardCon.dropPiece();
+                % make move on the board
+               
                 obj.board(x, y) = obj.playerPiece;
                 obj.emptySpaces = obj.emptySpaces - 1;
                 errorCode = 1;
@@ -65,31 +63,61 @@ classdef gamecontroller < handle
                 return;
             end
         end
-        % makes move for the computer
-        function errorCode = makeMoveCom(obj)
-            % checks if the game can be won
+        
+        % makes move for the computer returns the space that the computer
+        % made a move at
+        function [x, y] = makeMoveCom(obj)
+            % plays defensivly
             for i = 1:3
                 for j = 1:3
-                    % checks if a piece can be placed at (i, j)
-                    if obj.board(i, j) == '0'
-                        % copies board and places piece to check if the
-                        % game can be won
-                        cpyBoard = obj.board;
-                        cpyBoard(i, j) = obj.ComPiece;
-                        won = obj.isWon(cpyBoard, obj.ComPiece);
-                        if won == 1
-                            % grab piece, moves to (i, j), and drops piece
-                            obj.boardCon.grabPiece("computer");
-                            obj.boardCon.move(i, j);
-                            obj.boardCon.dropPiece();
+                    cpyBoard = obj.board;
+                    if cpyBoard(i, j) == '0'
+                        % place player piece and see if the player wins
+                        cpyBoard(i, j) = obj.playerPiece;
+                        if obj.isWon(cpyBoard, obj.playerPiece)
+                            % the player can win with that move so make
+                            % that move
                             obj.board(i, j) = obj.ComPiece;
                             obj.emptySpaces = obj.emptySpaces - 1;
-                            errorCode = 1;
-                            return
-                        end
+                            % put in code to make the move on the board
+                            
+                            
+                            x = i;
+                            y = j;
+                            return;
+                        end 
                     end
                 end
             end
+
+            % makes random move if needed
+            if obj.emptySpaces > 5
+                % makes random move
+                moveMade = 0;
+                while moveMade == 0
+                    i = randi(3);
+                    j = randi(3);
+                    if obj.board(i, j) == '0'
+                        obj.board(i, j) = obj.ComPiece;
+                        obj.emptySpaces = obj.emptySpaces - 1;
+                        % make move on the board
+                        
+                        x = i;
+                        y = j;
+                        
+                        return;
+                    end
+                end
+            end
+                        
+            % makes the minimax tree
+            [i, j] = obj.miniMax(obj.ComPiece);
+            obj.board(i, j) = obj.ComPiece;
+            obj.emptySpaces = obj.emptySpaces - 1;
+            % make move on the board
+            
+            x = i;
+            y = j;
         end
             
             % makes move for the computer
@@ -106,6 +134,7 @@ classdef gamecontroller < handle
                             % that move
                             obj.board(i, j) = obj.ComPiece;
                             obj.emptySpaces = obj.emptySpaces - 1;
+                            
                             return;
                         end 
                     end
