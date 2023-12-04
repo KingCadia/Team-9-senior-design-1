@@ -225,14 +225,6 @@ classdef gameController < handle
             end
         end
         
-        function tie = isTie(obj)
-            if obj.emptySpaces == 0
-                tie = 1;
-            else
-                tie = 0;
-            end
-        end
-        
     end
     
     methods(Access = private, Hidden = true)

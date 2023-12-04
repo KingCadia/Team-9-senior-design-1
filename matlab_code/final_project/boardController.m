@@ -27,12 +27,24 @@ classdef boardController < handle
             obj.motor_vert = motor(1);
             obj.x_location = 1;
             obj.y_location = -1;
-            
+            assignin('base', 'mag', 0);
         end
         
         % grabs the piece that is passed to this function
         function grabPiece(obj, piece)
-            
+            % goes to the piece location
+            % moves to the X position
+            if piece == 'X'
+               obj.moveTo(1, -1);
+               obj.x_location = 1;
+               obj.y_location = -1;
+            else
+               obj.moveTo(2, -1); 
+               obj.x_location = 2;
+               obj.y_location = -1;
+            end
+            % turns on the magnet
+            assignin('base', 'mag', 1);
         end
         
         % moves the piece placer to the location indicated by the row and
@@ -54,28 +66,22 @@ classdef boardController < handle
         
         % drops the piece that the actuator is currently holding
         function dropPiece(obj)
-            
+            assignin('base', 'mag', 0);
         end
         
         % returns the current row location
-        function getRow(obj)
-            
+        function x = getRow(obj)
+            x = obj.x_location;
         end
         
         % returns the current col location
-        function getCol(obj)
-            
+        function y = getCol(obj)
+            y = obj.y_location;
         end
         
         
 
     end
     
-    % private methods 
-    methods (Access = private, Hidden = true)
-        function moveWellLoc(wellLocs)
-            
-        end
-    end
 end
 
