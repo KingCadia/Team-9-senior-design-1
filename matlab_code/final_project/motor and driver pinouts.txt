@@ -1,0 +1,32 @@
+Input1	Input2	Spinning Direction
+Low(0)	Low(0)	Motor OFF
+High(1)	Low(0)	Forward
+Low(0)	High(1)	Backward
+High(1)	High(1)	Motor OFF
+
+IN1 and IN2 control motor A
+IN3 and IN4 control motor B
+
+motor red = Vcc
+motor black = GND
+motor green = Hall sensor GND
+motor blue = Hall sensor Vcc
+motor yellow = Hall sensor A Vout
+motor white = Hall sensor B Vout
+
+
+Motor Conncections
+horz motor
+encoderA pin 2
+encoderB pin 3
+IN1 pin 30
+IN2 pin 31
+step pin 5
+
+
+vert motor
+encoderA pin 50
+encoderB pin 51
+IN1 pin 32
+IN2 pin 33
+step pin 6

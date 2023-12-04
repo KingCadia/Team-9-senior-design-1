@@ -13,53 +13,75 @@ classdef boardController < handle
     properties (Access = private)
         motor_vert 
         motor_horz
-        mega
         x_location
         y_location
+        mag
     end
     
     % public methods
     methods (Access = public)
         function obj = boardController()
             % defines the needed properties 
-            obj.mega = arduino("COM3", "MEGA2560");
-            obj.motor_vert = motor(obj.mega, "D4", "D5", "D6", .0000625, 50, "D7", "D8");
-            obj.motor_horz = motor(obj.mega, "D11", "D12", "D13", .0000625, 50, "D14", "D15");
+            obj.mag = 0;
+            obj.motor_horz = motor(0);
+            obj.motor_vert = motor(1);
+            obj.x_location = 1;
+            obj.y_location = -1;
+            assignin('base', 'mag', 0);
         end
         
-        % grabs the piece assosiated with the player passed to the function
-        function grabPiece(obj, player)
-            
+        % grabs the piece that is passed to this function
+        function grabPiece(obj, piece)
+            % goes to the piece location
+            % moves to the X position
+            if piece == 'X'
+               obj.moveTo(1, -1);
+               obj.x_location = 1;
+               obj.y_location = -1;
+            else
+               obj.moveTo(2, -1); 
+               obj.x_location = 2;
+               obj.y_location = -1;
+            end
+            % turns on the magnet
+            assignin('base', 'mag', 1);
         end
         
         % moves the piece placer to the location indicated by the row and
         % col inputs
-        function moveTo(obj, row, col)
-            
+        function moveTo(obj, x, y)
+           % moves to the x location first
+           if x ~= obj.x_location
+               obj.motor_horz.move(x);
+               pause(3);
+               obj.x_location = x;
+           end
+           % moves the motor to the y location
+           if y ~= obj.y_location
+               obj.motor_vert.move(y);
+               pause(3);
+               obj.y_location = y;
+           end
         end
         
         % drops the piece that the actuator is currently holding
         function dropPiece(obj)
-            
+            assignin('base', 'mag', 0);
         end
         
         % returns the current row location
-        function getRow(obj)
-            
+        function x = getRow(obj)
+            x = obj.x_location;
         end
         
         % returns the current col location
-        function getCol(obj)
-            
+        function y = getCol(obj)
+            y = obj.y_location;
         end
         
         
 
     end
     
-    % private methods 
-    methods (Access = private, Hidden = true)
-        
-    end
 end
 
