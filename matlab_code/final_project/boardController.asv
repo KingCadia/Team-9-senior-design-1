@@ -40,16 +40,7 @@ classdef boardController < handle
         function moveTo(obj, x, y)
            % moves to the x location first
            if x ~= obj.x_location
-               obj.motor_horz.move(x);
-               pause(3);
-               obj.x_location = x;
-           end
-           % moves the motor to the y location
-           if y ~= obj.y_location
-               obj.motor_vert.move(y);
-               pause(3);
-               obj.y_location = y;
-           end
+           els
         end
         
         % drops the piece that the actuator is currently holding
