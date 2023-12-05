@@ -7,9 +7,9 @@
  *
  * Code generation for model "MotorModel_Sp23_V20a".
  *
- * Model version              : 10
+ * Model version              : 14
  * Simulink Coder version : 9.3 (R2020a) 18-Nov-2019
- * C source code generated on : Mon Dec  4 09:31:48 2023
+ * C source code generated on : Mon Dec  4 19:22:37 2023
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -23,7 +23,7 @@
  * Code generation for Simulink model "MotorModel_Sp23_V20a".
  *
  * Simulink Coder version                : 9.3 (R2020a) 18-Nov-2019
- * C source code generated on : Mon Dec  4 09:31:48 2023
+ * C source code generated on : Mon Dec  4 19:22:37 2023
  *
  * Note that the generated code is not dependent on this header file.
  * The file is used in cojuction with the automatic build procedure.

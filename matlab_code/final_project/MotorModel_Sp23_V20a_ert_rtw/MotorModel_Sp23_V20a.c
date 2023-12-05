@@ -7,9 +7,9 @@
  *
  * Code generation for model "MotorModel_Sp23_V20a".
  *
- * Model version              : 10
+ * Model version              : 14
  * Simulink Coder version : 9.3 (R2020a) 18-Nov-2019
- * C source code generated on : Mon Dec  4 09:31:48 2023
+ * C source code generated on : Mon Dec  4 19:22:37 2023
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -43,10 +43,10 @@ static void arduino_PWMOutput_set_pinNumber(codertarget_arduinobase_inter_T *obj
   j_codertarget_arduinobase_int_T *iobj_0);
 static void arduino_PWMOutput_set_pinNumb_j(codertarget_arduinobase_inter_T *obj,
   j_codertarget_arduinobase_int_T *iobj_0);
-static void matlabCodegenHandle_matlabC_jln(Encoder_arduino_MotorModel_Sp_T *obj);
+static void matlabCodegenHandle_matlab_jlnh(Encoder_arduino_MotorModel_Sp_T *obj);
 static void MotorModel_S_SystemCore_release(codertarget_arduinobase_inter_T *obj);
-static void MotorModel_SystemCore_delete_jl(codertarget_arduinobase_inter_T *obj);
-static void matlabCodegenHandle_matlabCo_jl(codertarget_arduinobase_inter_T *obj);
+static void MotorMode_SystemCore_delete_jln(codertarget_arduinobase_inter_T *obj);
+static void matlabCodegenHandle_matlabC_jln(codertarget_arduinobase_inter_T *obj);
 static void matlabCodegenHandle_matlabCodeg(codertarget_arduinobase_block_T *obj);
 void sMultiWordMul(const uint32_T u1[], int16_T n1, const uint32_T u2[], int16_T
                    n2, uint32_T y[], int16_T n)
@@ -329,7 +329,7 @@ real_T rt_roundd_snf(real_T u)
   return y;
 }
 
-static void matlabCodegenHandle_matlabC_jln(Encoder_arduino_MotorModel_Sp_T *obj)
+static void matlabCodegenHandle_matlab_jlnh(Encoder_arduino_MotorModel_Sp_T *obj)
 {
   if (!obj->matlabCodegenIsDeleted) {
     obj->matlabCodegenIsDeleted = true;
@@ -346,16 +346,16 @@ static void MotorModel_S_SystemCore_release(codertarget_arduinobase_inter_T *obj
   }
 }
 
-static void MotorModel_SystemCore_delete_jl(codertarget_arduinobase_inter_T *obj)
+static void MotorMode_SystemCore_delete_jln(codertarget_arduinobase_inter_T *obj)
 {
   MotorModel_S_SystemCore_release(obj);
 }
 
-static void matlabCodegenHandle_matlabCo_jl(codertarget_arduinobase_inter_T *obj)
+static void matlabCodegenHandle_matlabC_jln(codertarget_arduinobase_inter_T *obj)
 {
   if (!obj->matlabCodegenIsDeleted) {
     obj->matlabCodegenIsDeleted = true;
-    MotorModel_SystemCore_delete_jl(obj);
+    MotorMode_SystemCore_delete_jln(obj);
   }
 }
 
@@ -372,8 +372,8 @@ void MotorModel_Sp23_V20a_step(void)
   /* local block i/o variables */
   real_T rtb_Merge1;
   real_T rtb_Merge2;
-  real_T rtb_Merge1_a;
-  real_T rtb_Merge2_c;
+  real_T rtb_Merge1_p;
+  real_T rtb_Merge2_d;
   codertarget_arduinobase_inter_T *obj;
   real_T rtb_Abs1;
   uint32_T tmp;
@@ -589,49 +589,49 @@ void MotorModel_Sp23_V20a_step(void)
     /* End of MATLABSystem: '<S3>/Driver In2' */
 
     /* MATLABSystem: '<S4>/MATLAB System' */
-    if (MotorModel_Sp23_V20a_DW.obj_p.SampleTime !=
-        MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_f) {
-      if (((!rtIsInf(MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_f)) &&
-           (!rtIsNaN(MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_f))) ||
-          rtIsInf(MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_f)) {
+    if (MotorModel_Sp23_V20a_DW.obj_f.SampleTime !=
+        MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_h) {
+      if (((!rtIsInf(MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_h)) &&
+           (!rtIsNaN(MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_h))) ||
+          rtIsInf(MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_h)) {
         MotorModel_Sp23_V20a_B.sampleTime =
-          MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_f;
+          MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_h;
       }
 
-      MotorModel_Sp23_V20a_DW.obj_p.SampleTime =
+      MotorModel_Sp23_V20a_DW.obj_f.SampleTime =
         MotorModel_Sp23_V20a_B.sampleTime;
     }
 
-    MotorModel_Sp23_V20a_B.MATLABSystem = enc_output(0.0);
+    MotorModel_Sp23_V20a_B.MATLABSystem = enc_output(1.0);
 
     /* End of MATLABSystem: '<S4>/MATLAB System' */
 
     /* Gain: '<S4>/angular_position =  [relative_count//COUNTS_PER_REV] *360 degrees' */
-    tmp = (uint32_T)MotorModel_Sp23_V20a_P.angular_positionrelative_coun_e;
+    tmp = (uint32_T)MotorModel_Sp23_V20a_P.angular_positionrelative_coun_d;
     tmp_0 = (uint32_T)MotorModel_Sp23_V20a_B.MATLABSystem;
     sMultiWordMul(&tmp, 1, &tmp_0, 1,
-                  &MotorModel_Sp23_V20a_B.angular_positionrelative_coun_h.chunks[
+                  &MotorModel_Sp23_V20a_B.angular_positionrelative_coun_d.chunks[
                   0U], 2);
 
     /* Outport: '<Root>/motorPos_Out1' */
     MotorModel_Sp23_V20a_Y.motorPos_Out1 =
-      MotorModel_Sp23_V20a_B.angular_positionrelative_coun_h;
+      MotorModel_Sp23_V20a_B.angular_positionrelative_coun_d;
 
     /* Sum: '<Root>/Sum2' incorporates:
      *  Constant: '<Root>/vertAngle'
      */
     MotorModel_Sp23_V20a_B.ErrorSignal = MotorModel_Sp23_V20a_P.vertAngle_Value
       - sMultiWord2Double
-      (&MotorModel_Sp23_V20a_B.angular_positionrelative_coun_h.chunks[0U], 2, 0)
+      (&MotorModel_Sp23_V20a_B.angular_positionrelative_coun_d.chunks[0U], 2, 0)
       * 1.1641532182693481E-10;
 
     /* Gain: '<S78>/Derivative Gain' */
-    MotorModel_Sp23_V20a_B.DerivativeGain_c =
+    MotorModel_Sp23_V20a_B.DerivativeGain_e =
       MotorModel_Sp23_V20a_P.PIDController1_D *
       MotorModel_Sp23_V20a_B.ErrorSignal;
 
     /* Gain: '<S89>/Proportional Gain' */
-    MotorModel_Sp23_V20a_B.ProportionalGain_p =
+    MotorModel_Sp23_V20a_B.ProportionalGain_a =
       MotorModel_Sp23_V20a_P.PIDController1_P *
       MotorModel_Sp23_V20a_B.ErrorSignal;
   }
@@ -640,29 +640,29 @@ void MotorModel_Sp23_V20a_step(void)
    *  Integrator: '<S79>/Filter'
    *  Sum: '<S79>/SumD'
    */
-  MotorModel_Sp23_V20a_B.FilterCoefficient_i =
-    (MotorModel_Sp23_V20a_B.DerivativeGain_c -
-     MotorModel_Sp23_V20a_X.Filter_CSTATE_m) *
+  MotorModel_Sp23_V20a_B.FilterCoefficient_b =
+    (MotorModel_Sp23_V20a_B.DerivativeGain_e -
+     MotorModel_Sp23_V20a_X.Filter_CSTATE_d) *
     MotorModel_Sp23_V20a_P.PIDController1_N;
 
   /* Sum: '<S93>/Sum' incorporates:
    *  Integrator: '<S84>/Integrator'
    */
-  MotorModel_Sp23_V20a_B.Abs = (MotorModel_Sp23_V20a_B.ProportionalGain_p +
-    MotorModel_Sp23_V20a_X.Integrator_CSTATE_k) +
-    MotorModel_Sp23_V20a_B.FilterCoefficient_i;
+  MotorModel_Sp23_V20a_B.Abs = (MotorModel_Sp23_V20a_B.ProportionalGain_a +
+    MotorModel_Sp23_V20a_X.Integrator_CSTATE_p) +
+    MotorModel_Sp23_V20a_B.FilterCoefficient_b;
 
   /* Abs: '<S4>/Abs1' */
   rtb_Abs1 = fabs(MotorModel_Sp23_V20a_B.Abs);
 
   /* Saturate: '<S4>/Saturation' */
-  if (MotorModel_Sp23_V20a_B.Abs > MotorModel_Sp23_V20a_P.Saturation_UpperSat_e)
+  if (MotorModel_Sp23_V20a_B.Abs > MotorModel_Sp23_V20a_P.Saturation_UpperSat_j)
   {
-    MotorModel_Sp23_V20a_B.Abs = MotorModel_Sp23_V20a_P.Saturation_UpperSat_e;
+    MotorModel_Sp23_V20a_B.Abs = MotorModel_Sp23_V20a_P.Saturation_UpperSat_j;
   } else {
     if (MotorModel_Sp23_V20a_B.Abs <
-        MotorModel_Sp23_V20a_P.Saturation_LowerSat_b) {
-      MotorModel_Sp23_V20a_B.Abs = MotorModel_Sp23_V20a_P.Saturation_LowerSat_b;
+        MotorModel_Sp23_V20a_P.Saturation_LowerSat_k) {
+      MotorModel_Sp23_V20a_B.Abs = MotorModel_Sp23_V20a_P.Saturation_LowerSat_k;
     }
   }
 
@@ -671,24 +671,24 @@ void MotorModel_Sp23_V20a_step(void)
   /* If: '<S4>/Choose Direction' */
   if (rtmIsMajorTimeStep(MotorModel_Sp23_V20a_M)) {
     if ((MotorModel_Sp23_V20a_B.Abs > 0.0) && (rtb_Abs1 > 3.0)) {
-      MotorModel_Sp23_V20a_DW.ChooseDirection_ActiveSubsyst_g = 0;
+      MotorModel_Sp23_V20a_DW.ChooseDirection_ActiveSubsyst_a = 0;
     } else if ((MotorModel_Sp23_V20a_B.Abs < 0.0) && (rtb_Abs1 > 3.0)) {
-      MotorModel_Sp23_V20a_DW.ChooseDirection_ActiveSubsyst_g = 1;
+      MotorModel_Sp23_V20a_DW.ChooseDirection_ActiveSubsyst_a = 1;
     } else {
-      MotorModel_Sp23_V20a_DW.ChooseDirection_ActiveSubsyst_g = 2;
+      MotorModel_Sp23_V20a_DW.ChooseDirection_ActiveSubsyst_a = 2;
     }
   }
 
-  switch (MotorModel_Sp23_V20a_DW.ChooseDirection_ActiveSubsyst_g) {
+  switch (MotorModel_Sp23_V20a_DW.ChooseDirection_ActiveSubsyst_a) {
    case 0:
     /* Outputs for IfAction SubSystem: '<S4>/Motor Direction1' incorporates:
      *  ActionPort: '<S106>/Action Port'
      */
-    MotorModel_Sp23_MotorDirection1(&rtb_Merge1_a, &rtb_Merge2_c,
-      &MotorModel_Sp23_V20a_P.MotorDirection1_l);
+    MotorModel_Sp23_MotorDirection1(&rtb_Merge1_p, &rtb_Merge2_d,
+      &MotorModel_Sp23_V20a_P.MotorDirection1_n);
     if (rtmIsMajorTimeStep(MotorModel_Sp23_V20a_M)) {
       srUpdateBC
-        (MotorModel_Sp23_V20a_DW.MotorDirection1_l.MotorDirection1_SubsysRanBC);
+        (MotorModel_Sp23_V20a_DW.MotorDirection1_n.MotorDirection1_SubsysRanBC);
     }
 
     /* End of Outputs for SubSystem: '<S4>/Motor Direction1' */
@@ -698,11 +698,11 @@ void MotorModel_Sp23_V20a_step(void)
     /* Outputs for IfAction SubSystem: '<S4>/Motor Direction 2' incorporates:
      *  ActionPort: '<S105>/Action Port'
      */
-    MotorModel_Sp23_MotorDirection1(&rtb_Merge1_a, &rtb_Merge2_c,
-      &MotorModel_Sp23_V20a_P.MotorDirection2_c);
+    MotorModel_Sp23_MotorDirection1(&rtb_Merge1_p, &rtb_Merge2_d,
+      &MotorModel_Sp23_V20a_P.MotorDirection2_o);
     if (rtmIsMajorTimeStep(MotorModel_Sp23_V20a_M)) {
       srUpdateBC
-        (MotorModel_Sp23_V20a_DW.MotorDirection2_c.MotorDirection1_SubsysRanBC);
+        (MotorModel_Sp23_V20a_DW.MotorDirection2_o.MotorDirection1_SubsysRanBC);
     }
 
     /* End of Outputs for SubSystem: '<S4>/Motor Direction 2' */
@@ -712,11 +712,11 @@ void MotorModel_Sp23_V20a_step(void)
     /* Outputs for IfAction SubSystem: '<S4>/Constant Position' incorporates:
      *  ActionPort: '<S104>/Action Port'
      */
-    MotorModel_Sp23_MotorDirection1(&rtb_Merge1_a, &rtb_Merge2_c,
-      &MotorModel_Sp23_V20a_P.ConstantPosition_f);
+    MotorModel_Sp23_MotorDirection1(&rtb_Merge1_p, &rtb_Merge2_d,
+      &MotorModel_Sp23_V20a_P.ConstantPosition_n);
     if (rtmIsMajorTimeStep(MotorModel_Sp23_V20a_M)) {
       srUpdateBC
-        (MotorModel_Sp23_V20a_DW.ConstantPosition_f.MotorDirection1_SubsysRanBC);
+        (MotorModel_Sp23_V20a_DW.ConstantPosition_n.MotorDirection1_SubsysRanBC);
     }
 
     /* End of Outputs for SubSystem: '<S4>/Constant Position' */
@@ -733,7 +733,7 @@ void MotorModel_Sp23_V20a_step(void)
   obj->MW_PWM_HANDLE = MW_PWM_GetHandle(MotorModel_Sp23_V20a_DW.obj.PinPWM);
 
   /* Gain: '<S4>/Gain' */
-  rtb_Abs1 = MotorModel_Sp23_V20a_P.Gain_Gain_b * MotorModel_Sp23_V20a_B.Abs;
+  rtb_Abs1 = MotorModel_Sp23_V20a_P.Gain_Gain_d * MotorModel_Sp23_V20a_B.Abs;
 
   /* MATLABSystem: '<S4>/Enable' */
   if (!(rtb_Abs1 < 255.0)) {
@@ -747,12 +747,12 @@ void MotorModel_Sp23_V20a_step(void)
   MW_PWM_SetDutyCycle(MotorModel_Sp23_V20a_DW.obj.MW_PWM_HANDLE, rtb_Abs1);
   if (rtmIsMajorTimeStep(MotorModel_Sp23_V20a_M)) {
     /* Gain: '<S81>/Integral Gain' */
-    MotorModel_Sp23_V20a_B.IntegralGain_n =
+    MotorModel_Sp23_V20a_B.IntegralGain_h =
       MotorModel_Sp23_V20a_P.PIDController1_I *
       MotorModel_Sp23_V20a_B.ErrorSignal;
 
     /* MATLABSystem: '<S4>/Driver In1' */
-    MotorModel_Sp23_V20a_B.ErrorSignal = rt_roundd_snf(rtb_Merge1_a);
+    MotorModel_Sp23_V20a_B.ErrorSignal = rt_roundd_snf(rtb_Merge1_p);
     if (MotorModel_Sp23_V20a_B.ErrorSignal < 256.0) {
       if (MotorModel_Sp23_V20a_B.ErrorSignal >= 0.0) {
         tmp_1 = (uint8_T)MotorModel_Sp23_V20a_B.ErrorSignal;
@@ -768,7 +768,7 @@ void MotorModel_Sp23_V20a_step(void)
     /* End of MATLABSystem: '<S4>/Driver In1' */
 
     /* MATLABSystem: '<S4>/Driver In2' */
-    MotorModel_Sp23_V20a_B.ErrorSignal = rt_roundd_snf(rtb_Merge2_c);
+    MotorModel_Sp23_V20a_B.ErrorSignal = rt_roundd_snf(rtb_Merge2_d);
     if (MotorModel_Sp23_V20a_B.ErrorSignal < 256.0) {
       if (MotorModel_Sp23_V20a_B.ErrorSignal >= 0.0) {
         tmp_1 = (uint8_T)MotorModel_Sp23_V20a_B.ErrorSignal;
@@ -782,6 +782,25 @@ void MotorModel_Sp23_V20a_step(void)
     writeDigitalPin(33, tmp_1);
 
     /* End of MATLABSystem: '<S4>/Driver In2' */
+
+    /* MATLABSystem: '<Root>/magnet' incorporates:
+     *  Constant: '<Root>/magnetController'
+     */
+    MotorModel_Sp23_V20a_B.ErrorSignal = rt_roundd_snf
+      (MotorModel_Sp23_V20a_P.magnetController_Value);
+    if (MotorModel_Sp23_V20a_B.ErrorSignal < 256.0) {
+      if (MotorModel_Sp23_V20a_B.ErrorSignal >= 0.0) {
+        tmp_1 = (uint8_T)MotorModel_Sp23_V20a_B.ErrorSignal;
+      } else {
+        tmp_1 = 0U;
+      }
+    } else {
+      tmp_1 = MAX_uint8_T;
+    }
+
+    writeDigitalPin(9, tmp_1);
+
+    /* End of MATLABSystem: '<Root>/magnet' */
   }
 
   if (rtmIsMajorTimeStep(MotorModel_Sp23_V20a_M)) {
@@ -865,10 +884,10 @@ void MotorModel_Sp23_V20a_derivatives(void)
   _rtXdot->Integrator_CSTATE = MotorModel_Sp23_V20a_B.IntegralGain;
 
   /* Derivatives for Integrator: '<S79>/Filter' */
-  _rtXdot->Filter_CSTATE_m = MotorModel_Sp23_V20a_B.FilterCoefficient_i;
+  _rtXdot->Filter_CSTATE_d = MotorModel_Sp23_V20a_B.FilterCoefficient_b;
 
   /* Derivatives for Integrator: '<S84>/Integrator' */
-  _rtXdot->Integrator_CSTATE_k = MotorModel_Sp23_V20a_B.IntegralGain_n;
+  _rtXdot->Integrator_CSTATE_p = MotorModel_Sp23_V20a_B.IntegralGain_h;
 }
 
 /* Model initialize function */
@@ -924,15 +943,15 @@ void MotorModel_Sp23_V20a_initialize(void)
   MotorModel_Sp23_V20a_M->Timing.stepSize0 = 0.001;
 
   /* External mode info */
-  MotorModel_Sp23_V20a_M->Sizes.checksums[0] = (3244076673U);
-  MotorModel_Sp23_V20a_M->Sizes.checksums[1] = (442383943U);
-  MotorModel_Sp23_V20a_M->Sizes.checksums[2] = (2555278911U);
-  MotorModel_Sp23_V20a_M->Sizes.checksums[3] = (4047438086U);
+  MotorModel_Sp23_V20a_M->Sizes.checksums[0] = (817927668U);
+  MotorModel_Sp23_V20a_M->Sizes.checksums[1] = (802682206U);
+  MotorModel_Sp23_V20a_M->Sizes.checksums[2] = (1997096492U);
+  MotorModel_Sp23_V20a_M->Sizes.checksums[3] = (82812689U);
 
   {
     static const sysRanDType rtAlwaysEnabled = SUBSYS_RAN_BC_ENABLE;
     static RTWExtModeInfo rt_ExtModeInfo;
-    static const sysRanDType *systemRan[15];
+    static const sysRanDType *systemRan[16];
     MotorModel_Sp23_V20a_M->extModeInfo = (&rt_ExtModeInfo);
     rteiSetSubSystemActiveVectorAddresses(&rt_ExtModeInfo, systemRan);
     systemRan[0] = &rtAlwaysEnabled;
@@ -940,22 +959,23 @@ void MotorModel_Sp23_V20a_initialize(void)
     systemRan[2] = &rtAlwaysEnabled;
     systemRan[3] = &rtAlwaysEnabled;
     systemRan[4] = &rtAlwaysEnabled;
-    systemRan[5] = (sysRanDType *)
-      &MotorModel_Sp23_V20a_DW.ConstantPosition.MotorDirection1_SubsysRanBC;
+    systemRan[5] = &rtAlwaysEnabled;
     systemRan[6] = (sysRanDType *)
-      &MotorModel_Sp23_V20a_DW.MotorDirection2.MotorDirection1_SubsysRanBC;
+      &MotorModel_Sp23_V20a_DW.ConstantPosition.MotorDirection1_SubsysRanBC;
     systemRan[7] = (sysRanDType *)
+      &MotorModel_Sp23_V20a_DW.MotorDirection2.MotorDirection1_SubsysRanBC;
+    systemRan[8] = (sysRanDType *)
       &MotorModel_Sp23_V20a_DW.MotorDirection1.MotorDirection1_SubsysRanBC;
-    systemRan[8] = &rtAlwaysEnabled;
     systemRan[9] = &rtAlwaysEnabled;
     systemRan[10] = &rtAlwaysEnabled;
     systemRan[11] = &rtAlwaysEnabled;
-    systemRan[12] = (sysRanDType *)
-      &MotorModel_Sp23_V20a_DW.ConstantPosition_f.MotorDirection1_SubsysRanBC;
+    systemRan[12] = &rtAlwaysEnabled;
     systemRan[13] = (sysRanDType *)
-      &MotorModel_Sp23_V20a_DW.MotorDirection2_c.MotorDirection1_SubsysRanBC;
+      &MotorModel_Sp23_V20a_DW.ConstantPosition_n.MotorDirection1_SubsysRanBC;
     systemRan[14] = (sysRanDType *)
-      &MotorModel_Sp23_V20a_DW.MotorDirection1_l.MotorDirection1_SubsysRanBC;
+      &MotorModel_Sp23_V20a_DW.MotorDirection2_o.MotorDirection1_SubsysRanBC;
+    systemRan[15] = (sysRanDType *)
+      &MotorModel_Sp23_V20a_DW.MotorDirection1_n.MotorDirection1_SubsysRanBC;
     rteiSetModelMappingInfoPtr(MotorModel_Sp23_V20a_M->extModeInfo,
       &MotorModel_Sp23_V20a_M->SpecialInfo.mappingInfo);
     rteiSetChecksumsPtr(MotorModel_Sp23_V20a_M->extModeInfo,
@@ -1022,36 +1042,36 @@ void MotorModel_Sp23_V20a_initialize(void)
     MotorModel_Sp23_V20a_DW.obj_l.isSetupComplete = true;
 
     /* Start for MATLABSystem: '<S3>/Driver In2' */
-    MotorModel_Sp23_V20a_DW.obj_f.matlabCodegenIsDeleted = false;
+    MotorModel_Sp23_V20a_DW.obj_fl.matlabCodegenIsDeleted = false;
     MotorModel_Sp23_V20a_DW.objisempty_e = true;
-    MotorModel_Sp23_V20a_DW.obj_f.isInitialized = 1L;
+    MotorModel_Sp23_V20a_DW.obj_fl.isInitialized = 1L;
     digitalIOSetup(31, 1);
-    MotorModel_Sp23_V20a_DW.obj_f.isSetupComplete = true;
+    MotorModel_Sp23_V20a_DW.obj_fl.isSetupComplete = true;
 
     /* Start for MATLABSystem: '<S4>/MATLAB System' */
-    MotorModel_Sp23_V20a_DW.obj_p.matlabCodegenIsDeleted = false;
+    MotorModel_Sp23_V20a_DW.obj_f.matlabCodegenIsDeleted = false;
     MotorModel_Sp23_V20a_DW.objisempty = true;
-    if (((!rtIsInf(MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_f)) &&
-         (!rtIsNaN(MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_f))) ||
-        rtIsInf(MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_f)) {
-      sampleTime = MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_f;
+    if (((!rtIsInf(MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_h)) &&
+         (!rtIsNaN(MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_h))) ||
+        rtIsInf(MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_h)) {
+      sampleTime = MotorModel_Sp23_V20a_P.MATLABSystem_SampleTime_h;
     }
 
-    MotorModel_Sp23_V20a_DW.obj_p.SampleTime = sampleTime;
-    MotorModel_Sp23_V20a_DW.obj_p.isInitialized = 1L;
-    enc_init(0.0, 50.0, 51.0);
-    MotorModel_Sp23_V20a_DW.obj_p.isSetupComplete = true;
+    MotorModel_Sp23_V20a_DW.obj_f.SampleTime = sampleTime;
+    MotorModel_Sp23_V20a_DW.obj_f.isInitialized = 1L;
+    enc_init(1.0, 18.0, 19.0);
+    MotorModel_Sp23_V20a_DW.obj_f.isSetupComplete = true;
 
     /* End of Start for MATLABSystem: '<S4>/MATLAB System' */
 
     /* Start for If: '<S4>/Choose Direction' */
-    MotorModel_Sp23_V20a_DW.ChooseDirection_ActiveSubsyst_g = -1;
+    MotorModel_Sp23_V20a_DW.ChooseDirection_ActiveSubsyst_a = -1;
 
     /* Start for MATLABSystem: '<S4>/Enable' */
     MotorModel_Sp23_V20a_DW.obj.matlabCodegenIsDeleted = true;
     MotorModel_Sp23_V20a_DW.obj.isInitialized = 0L;
     MotorModel_Sp23_V20a_DW.obj.matlabCodegenIsDeleted = false;
-    MotorModel_Sp23_V20a_DW.objisempty_f = true;
+    MotorModel_Sp23_V20a_DW.objisempty_n = true;
     arduino_PWMOutput_set_pinNumb_j(&MotorModel_Sp23_V20a_DW.obj,
       &MotorModel_Sp23_V20a_DW.gobj_2);
     obj = &MotorModel_Sp23_V20a_DW.obj;
@@ -1064,18 +1084,25 @@ void MotorModel_Sp23_V20a_initialize(void)
     MotorModel_Sp23_V20a_DW.obj.isSetupComplete = true;
 
     /* Start for MATLABSystem: '<S4>/Driver In1' */
-    MotorModel_Sp23_V20a_DW.obj_h.matlabCodegenIsDeleted = false;
-    MotorModel_Sp23_V20a_DW.objisempty_h = true;
-    MotorModel_Sp23_V20a_DW.obj_h.isInitialized = 1L;
+    MotorModel_Sp23_V20a_DW.obj_k.matlabCodegenIsDeleted = false;
+    MotorModel_Sp23_V20a_DW.objisempty_j = true;
+    MotorModel_Sp23_V20a_DW.obj_k.isInitialized = 1L;
     digitalIOSetup(32, 1);
-    MotorModel_Sp23_V20a_DW.obj_h.isSetupComplete = true;
+    MotorModel_Sp23_V20a_DW.obj_k.isSetupComplete = true;
 
     /* Start for MATLABSystem: '<S4>/Driver In2' */
-    MotorModel_Sp23_V20a_DW.obj_g.matlabCodegenIsDeleted = false;
-    MotorModel_Sp23_V20a_DW.objisempty_m = true;
-    MotorModel_Sp23_V20a_DW.obj_g.isInitialized = 1L;
+    MotorModel_Sp23_V20a_DW.obj_kr.matlabCodegenIsDeleted = false;
+    MotorModel_Sp23_V20a_DW.objisempty_g = true;
+    MotorModel_Sp23_V20a_DW.obj_kr.isInitialized = 1L;
     digitalIOSetup(33, 1);
-    MotorModel_Sp23_V20a_DW.obj_g.isSetupComplete = true;
+    MotorModel_Sp23_V20a_DW.obj_kr.isSetupComplete = true;
+
+    /* Start for MATLABSystem: '<Root>/magnet' */
+    MotorModel_Sp23_V20a_DW.obj_h.matlabCodegenIsDeleted = false;
+    MotorModel_Sp23_V20a_DW.objisempty_m = true;
+    MotorModel_Sp23_V20a_DW.obj_h.isInitialized = 1L;
+    digitalIOSetup(9, 1);
+    MotorModel_Sp23_V20a_DW.obj_h.isSetupComplete = true;
   }
 
   /* InitializeConditions for Integrator: '<S31>/Filter' */
@@ -1087,38 +1114,41 @@ void MotorModel_Sp23_V20a_initialize(void)
     MotorModel_Sp23_V20a_P.PIDController_InitialConditio_o;
 
   /* InitializeConditions for Integrator: '<S79>/Filter' */
-  MotorModel_Sp23_V20a_X.Filter_CSTATE_m =
+  MotorModel_Sp23_V20a_X.Filter_CSTATE_d =
     MotorModel_Sp23_V20a_P.PIDController1_InitialCondition;
 
   /* InitializeConditions for Integrator: '<S84>/Integrator' */
-  MotorModel_Sp23_V20a_X.Integrator_CSTATE_k =
-    MotorModel_Sp23_V20a_P.PIDController1_InitialConditi_a;
+  MotorModel_Sp23_V20a_X.Integrator_CSTATE_p =
+    MotorModel_Sp23_V20a_P.PIDController1_InitialConditi_l;
 }
 
 /* Model terminate function */
 void MotorModel_Sp23_V20a_terminate(void)
 {
   /* Terminate for MATLABSystem: '<S3>/MATLAB System' */
-  matlabCodegenHandle_matlabC_jln(&MotorModel_Sp23_V20a_DW.obj_m);
+  matlabCodegenHandle_matlab_jlnh(&MotorModel_Sp23_V20a_DW.obj_m);
 
   /* Terminate for MATLABSystem: '<S3>/Enable' */
-  matlabCodegenHandle_matlabCo_jl(&MotorModel_Sp23_V20a_DW.obj_b);
+  matlabCodegenHandle_matlabC_jln(&MotorModel_Sp23_V20a_DW.obj_b);
 
   /* Terminate for MATLABSystem: '<S3>/Driver In1' */
   matlabCodegenHandle_matlabCodeg(&MotorModel_Sp23_V20a_DW.obj_l);
 
   /* Terminate for MATLABSystem: '<S3>/Driver In2' */
-  matlabCodegenHandle_matlabCodeg(&MotorModel_Sp23_V20a_DW.obj_f);
+  matlabCodegenHandle_matlabCodeg(&MotorModel_Sp23_V20a_DW.obj_fl);
 
   /* Terminate for MATLABSystem: '<S4>/MATLAB System' */
-  matlabCodegenHandle_matlabC_jln(&MotorModel_Sp23_V20a_DW.obj_p);
+  matlabCodegenHandle_matlab_jlnh(&MotorModel_Sp23_V20a_DW.obj_f);
 
   /* Terminate for MATLABSystem: '<S4>/Enable' */
-  matlabCodegenHandle_matlabCo_jl(&MotorModel_Sp23_V20a_DW.obj);
+  matlabCodegenHandle_matlabC_jln(&MotorModel_Sp23_V20a_DW.obj);
 
   /* Terminate for MATLABSystem: '<S4>/Driver In1' */
-  matlabCodegenHandle_matlabCodeg(&MotorModel_Sp23_V20a_DW.obj_h);
+  matlabCodegenHandle_matlabCodeg(&MotorModel_Sp23_V20a_DW.obj_k);
 
   /* Terminate for MATLABSystem: '<S4>/Driver In2' */
-  matlabCodegenHandle_matlabCodeg(&MotorModel_Sp23_V20a_DW.obj_g);
+  matlabCodegenHandle_matlabCodeg(&MotorModel_Sp23_V20a_DW.obj_kr);
+
+  /* Terminate for MATLABSystem: '<Root>/magnet' */
+  matlabCodegenHandle_matlabCodeg(&MotorModel_Sp23_V20a_DW.obj_h);
 }

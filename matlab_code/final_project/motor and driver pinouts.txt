@@ -25,8 +25,8 @@ step pin 5
 
 
 vert motor
-encoderA pin 50
-encoderB pin 51
+encoderA pin 18
+encoderB pin 19
 IN1 pin 32
 IN2 pin 33
 step pin 6

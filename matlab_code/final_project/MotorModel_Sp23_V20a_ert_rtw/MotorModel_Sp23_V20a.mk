@@ -2,7 +2,7 @@
 ## Makefile generated for Simulink model 'MotorModel_Sp23_V20a'. 
 ## 
 ## Makefile     : MotorModel_Sp23_V20a.mk
-## Generated on : Mon Dec 04 09:32:14 2023
+## Generated on : Mon Dec 04 18:19:27 2023
 ## MATLAB Coder version: 5.0 (R2020a)
 ## 
 ## Build Info:

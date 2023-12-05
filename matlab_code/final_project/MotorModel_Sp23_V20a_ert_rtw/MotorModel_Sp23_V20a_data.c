@@ -7,9 +7,9 @@
  *
  * Code generation for model "MotorModel_Sp23_V20a".
  *
- * Model version              : 10
+ * Model version              : 14
  * Simulink Coder version : 9.3 (R2020a) 18-Nov-2019
- * C source code generated on : Mon Dec  4 09:31:48 2023
+ * C source code generated on : Mon Dec  4 19:22:37 2023
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -26,22 +26,22 @@ P_MotorModel_Sp23_V20a_T MotorModel_Sp23_V20a_P = {
   /* Mask Parameter: PIDController_D
    * Referenced by: '<S30>/Derivative Gain'
    */
-  0.09,
+  0.001,
 
   /* Mask Parameter: PIDController1_D
    * Referenced by: '<S78>/Derivative Gain'
    */
-  0.09,
+  0.001,
 
   /* Mask Parameter: PIDController_I
    * Referenced by: '<S33>/Integral Gain'
    */
-  0.02,
+  0.01,
 
   /* Mask Parameter: PIDController1_I
    * Referenced by: '<S81>/Integral Gain'
    */
-  0.02,
+  0.1,
 
   /* Mask Parameter: PIDController_InitialConditionF
    * Referenced by: '<S31>/Filter'
@@ -58,7 +58,7 @@ P_MotorModel_Sp23_V20a_T MotorModel_Sp23_V20a_P = {
    */
   0.0,
 
-  /* Mask Parameter: PIDController1_InitialConditi_a
+  /* Mask Parameter: PIDController1_InitialConditi_l
    * Referenced by: '<S84>/Integrator'
    */
   0.0,
@@ -133,12 +133,17 @@ P_MotorModel_Sp23_V20a_T MotorModel_Sp23_V20a_P = {
    */
   85.0,
 
+  /* Expression: 0
+   * Referenced by: '<Root>/magnetController'
+   */
+  0.0,
+
   /* Computed Parameter: angular_positionrelative_countC
    * Referenced by: '<S3>/angular_position =  [relative_count//COUNTS_PER_REV] *360 degrees'
    */
   1932735283,
 
-  /* Computed Parameter: angular_positionrelative_coun_e
+  /* Computed Parameter: angular_positionrelative_coun_d
    * Referenced by: '<S4>/angular_position =  [relative_count//COUNTS_PER_REV] *360 degrees'
    */
   1932735283,

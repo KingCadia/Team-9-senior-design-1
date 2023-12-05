@@ -7,9 +7,9 @@
  *
  * Code generation for model "MotorModel_Sp23_V20a".
  *
- * Model version              : 10
+ * Model version              : 14
  * Simulink Coder version : 9.3 (R2020a) 18-Nov-2019
- * C source code generated on : Mon Dec  4 09:31:48 2023
+ * C source code generated on : Mon Dec  4 19:22:37 2023
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -183,16 +183,16 @@ typedef struct {
 typedef struct {
   real_T ProportionalGain;             /* '<S41>/Proportional Gain' */
   real_T IntegralGain;                 /* '<S33>/Integral Gain' */
-  real_T DerivativeGain_c;             /* '<S78>/Derivative Gain' */
-  real_T FilterCoefficient_i;          /* '<S87>/Filter Coefficient' */
-  real_T ProportionalGain_p;           /* '<S89>/Proportional Gain' */
-  real_T IntegralGain_n;               /* '<S81>/Integral Gain' */
+  real_T DerivativeGain_e;             /* '<S78>/Derivative Gain' */
+  real_T FilterCoefficient_b;          /* '<S87>/Filter Coefficient' */
+  real_T ProportionalGain_a;           /* '<S89>/Proportional Gain' */
+  real_T IntegralGain_h;               /* '<S81>/Integral Gain' */
   real_T sampleTime;
   real_T Abs;                          /* '<S4>/Abs' */
   real_T ErrorSignal;                  /* '<Root>/Sum2' */
   int64m_T angular_positionrelative_countC;
   /* '<S3>/angular_position =  [relative_count//COUNTS_PER_REV] *360 degrees' */
-  int64m_T angular_positionrelative_coun_h;
+  int64m_T angular_positionrelative_coun_d;
   /* '<S4>/angular_position =  [relative_count//COUNTS_PER_REV] *360 degrees' */
   real_T DerivativeGain;               /* '<S30>/Derivative Gain' */
   real_T FilterCoefficient;            /* '<S39>/Filter Coefficient' */
@@ -204,7 +204,7 @@ typedef struct {
 typedef struct {
   codertarget_arduinobase_inter_T obj; /* '<S4>/Enable' */
   codertarget_arduinobase_inter_T obj_b;/* '<S3>/Enable' */
-  Encoder_arduino_MotorModel_Sp_T obj_p;/* '<S4>/MATLAB System' */
+  Encoder_arduino_MotorModel_Sp_T obj_f;/* '<S4>/MATLAB System' */
   Encoder_arduino_MotorModel_Sp_T obj_m;/* '<S3>/MATLAB System' */
   j_codertarget_arduinobase_int_T gobj_1;/* '<S4>/Enable' */
   j_codertarget_arduinobase_int_T gobj_2;/* '<S4>/Enable' */
@@ -214,23 +214,25 @@ typedef struct {
   j_codertarget_arduinobase_int_T gobj_2_i;/* '<S3>/Enable' */
   j_codertarget_arduinobase_int_T gobj_3_k;/* '<S3>/Enable' */
   j_codertarget_arduinobase_int_T gobj_4_d;/* '<S3>/Enable' */
-  codertarget_arduinobase_block_T obj_h;/* '<S4>/Driver In1' */
-  codertarget_arduinobase_block_T obj_g;/* '<S4>/Driver In2' */
+  codertarget_arduinobase_block_T obj_k;/* '<S4>/Driver In1' */
+  codertarget_arduinobase_block_T obj_kr;/* '<S4>/Driver In2' */
   codertarget_arduinobase_block_T obj_l;/* '<S3>/Driver In1' */
-  codertarget_arduinobase_block_T obj_f;/* '<S3>/Driver In2' */
+  codertarget_arduinobase_block_T obj_fl;/* '<S3>/Driver In2' */
+  codertarget_arduinobase_block_T obj_h;/* '<Root>/magnet' */
   int8_T ChooseDirection_ActiveSubsystem;/* '<S3>/Choose Direction' */
-  int8_T ChooseDirection_ActiveSubsyst_g;/* '<S4>/Choose Direction' */
+  int8_T ChooseDirection_ActiveSubsyst_a;/* '<S4>/Choose Direction' */
   boolean_T objisempty;                /* '<S4>/MATLAB System' */
-  boolean_T objisempty_f;              /* '<S4>/Enable' */
-  boolean_T objisempty_h;              /* '<S4>/Driver In1' */
-  boolean_T objisempty_m;              /* '<S4>/Driver In2' */
+  boolean_T objisempty_n;              /* '<S4>/Enable' */
+  boolean_T objisempty_j;              /* '<S4>/Driver In1' */
+  boolean_T objisempty_g;              /* '<S4>/Driver In2' */
   boolean_T objisempty_p;              /* '<S3>/MATLAB System' */
   boolean_T objisempty_k;              /* '<S3>/Enable' */
   boolean_T objisempty_b;              /* '<S3>/Driver In1' */
   boolean_T objisempty_e;              /* '<S3>/Driver In2' */
-  DW_MotorDirection1_MotorModel_T ConstantPosition_f;/* '<S4>/Constant Position' */
-  DW_MotorDirection1_MotorModel_T MotorDirection2_c;/* '<S4>/Motor Direction 2' */
-  DW_MotorDirection1_MotorModel_T MotorDirection1_l;/* '<S4>/Motor Direction1' */
+  boolean_T objisempty_m;              /* '<Root>/magnet' */
+  DW_MotorDirection1_MotorModel_T ConstantPosition_n;/* '<S4>/Constant Position' */
+  DW_MotorDirection1_MotorModel_T MotorDirection2_o;/* '<S4>/Motor Direction 2' */
+  DW_MotorDirection1_MotorModel_T MotorDirection1_n;/* '<S4>/Motor Direction1' */
   DW_MotorDirection1_MotorModel_T ConstantPosition;/* '<S3>/Constant Position' */
   DW_MotorDirection1_MotorModel_T MotorDirection2;/* '<S3>/Motor Direction 2' */
   DW_MotorDirection1_MotorModel_T MotorDirection1;/* '<S3>/Motor Direction1' */
@@ -240,24 +242,24 @@ typedef struct {
 typedef struct {
   real_T Filter_CSTATE;                /* '<S31>/Filter' */
   real_T Integrator_CSTATE;            /* '<S36>/Integrator' */
-  real_T Filter_CSTATE_m;              /* '<S79>/Filter' */
-  real_T Integrator_CSTATE_k;          /* '<S84>/Integrator' */
+  real_T Filter_CSTATE_d;              /* '<S79>/Filter' */
+  real_T Integrator_CSTATE_p;          /* '<S84>/Integrator' */
 } X_MotorModel_Sp23_V20a_T;
 
 /* State derivatives (default storage) */
 typedef struct {
   real_T Filter_CSTATE;                /* '<S31>/Filter' */
   real_T Integrator_CSTATE;            /* '<S36>/Integrator' */
-  real_T Filter_CSTATE_m;              /* '<S79>/Filter' */
-  real_T Integrator_CSTATE_k;          /* '<S84>/Integrator' */
+  real_T Filter_CSTATE_d;              /* '<S79>/Filter' */
+  real_T Integrator_CSTATE_p;          /* '<S84>/Integrator' */
 } XDot_MotorModel_Sp23_V20a_T;
 
 /* State disabled  */
 typedef struct {
   boolean_T Filter_CSTATE;             /* '<S31>/Filter' */
   boolean_T Integrator_CSTATE;         /* '<S36>/Integrator' */
-  boolean_T Filter_CSTATE_m;           /* '<S79>/Filter' */
-  boolean_T Integrator_CSTATE_k;       /* '<S84>/Integrator' */
+  boolean_T Filter_CSTATE_d;           /* '<S79>/Filter' */
+  boolean_T Integrator_CSTATE_p;       /* '<S84>/Integrator' */
 } XDis_MotorModel_Sp23_V20a_T;
 
 #ifndef ODE3_INTG
@@ -313,8 +315,8 @@ struct P_MotorModel_Sp23_V20a_T_ {
                               /* Mask Parameter: PIDController_InitialConditio_o
                                * Referenced by: '<S36>/Integrator'
                                */
-  real_T PIDController1_InitialConditi_a;
-                              /* Mask Parameter: PIDController1_InitialConditi_a
+  real_T PIDController1_InitialConditi_l;
+                              /* Mask Parameter: PIDController1_InitialConditi_l
                                * Referenced by: '<S84>/Integrator'
                                */
   real_T PIDController_N;              /* Mask Parameter: PIDController_N
@@ -332,7 +334,7 @@ struct P_MotorModel_Sp23_V20a_T_ {
   real_T MATLABSystem_SampleTime;      /* Expression: 0.001
                                         * Referenced by: '<S3>/MATLAB System'
                                         */
-  real_T MATLABSystem_SampleTime_f;    /* Expression: 0.001
+  real_T MATLABSystem_SampleTime_h;    /* Expression: 0.001
                                         * Referenced by: '<S4>/MATLAB System'
                                         */
   real_T horzAngle_Value;              /* Expression: 0
@@ -350,26 +352,29 @@ struct P_MotorModel_Sp23_V20a_T_ {
   real_T vertAngle_Value;              /* Expression: 0
                                         * Referenced by: '<Root>/vertAngle'
                                         */
-  real_T Saturation_UpperSat_e;        /* Expression: 5
+  real_T Saturation_UpperSat_j;        /* Expression: 5
                                         * Referenced by: '<S4>/Saturation'
                                         */
-  real_T Saturation_LowerSat_b;        /* Expression: -5
+  real_T Saturation_LowerSat_k;        /* Expression: -5
                                         * Referenced by: '<S4>/Saturation'
                                         */
-  real_T Gain_Gain_b;                  /* Expression: 255/3
+  real_T Gain_Gain_d;                  /* Expression: 255/3
                                         * Referenced by: '<S4>/Gain'
+                                        */
+  real_T magnetController_Value;       /* Expression: 0
+                                        * Referenced by: '<Root>/magnetController'
                                         */
   int32_T angular_positionrelative_countC;
                           /* Computed Parameter: angular_positionrelative_countC
                            * Referenced by: '<S3>/angular_position =  [relative_count//COUNTS_PER_REV] *360 degrees'
                            */
-  int32_T angular_positionrelative_coun_e;
-                          /* Computed Parameter: angular_positionrelative_coun_e
+  int32_T angular_positionrelative_coun_d;
+                          /* Computed Parameter: angular_positionrelative_coun_d
                            * Referenced by: '<S4>/angular_position =  [relative_count//COUNTS_PER_REV] *360 degrees'
                            */
-  P_MotorDirection1_MotorModel__T ConstantPosition_f;/* '<S4>/Constant Position' */
-  P_MotorDirection1_MotorModel__T MotorDirection2_c;/* '<S4>/Motor Direction 2' */
-  P_MotorDirection1_MotorModel__T MotorDirection1_l;/* '<S4>/Motor Direction1' */
+  P_MotorDirection1_MotorModel__T ConstantPosition_n;/* '<S4>/Constant Position' */
+  P_MotorDirection1_MotorModel__T MotorDirection2_o;/* '<S4>/Motor Direction 2' */
+  P_MotorDirection1_MotorModel__T MotorDirection1_n;/* '<S4>/Motor Direction1' */
   P_MotorDirection1_MotorModel__T ConstantPosition;/* '<S3>/Constant Position' */
   P_MotorDirection1_MotorModel__T MotorDirection2;/* '<S3>/Motor Direction 2' */
   P_MotorDirection1_MotorModel__T MotorDirection1;/* '<S3>/Motor Direction1' */
@@ -474,7 +479,7 @@ extern RT_MODEL_MotorModel_Sp23_V20a_T *const MotorModel_Sp23_V20a_M;
  * '<S1>'   : 'MotorModel_Sp23_V20a/PID Controller'
  * '<S2>'   : 'MotorModel_Sp23_V20a/PID Controller1'
  * '<S3>'   : 'MotorModel_Sp23_V20a/horz motor'
- * '<S4>'   : 'MotorModel_Sp23_V20a/vert motor'
+ * '<S4>'   : 'MotorModel_Sp23_V20a/horz motor1'
  * '<S5>'   : 'MotorModel_Sp23_V20a/PID Controller/Anti-windup'
  * '<S6>'   : 'MotorModel_Sp23_V20a/PID Controller/D Gain'
  * '<S7>'   : 'MotorModel_Sp23_V20a/PID Controller/Filter'
@@ -574,8 +579,8 @@ extern RT_MODEL_MotorModel_Sp23_V20a_T *const MotorModel_Sp23_V20a_M;
  * '<S101>' : 'MotorModel_Sp23_V20a/horz motor/Constant Position'
  * '<S102>' : 'MotorModel_Sp23_V20a/horz motor/Motor Direction 2'
  * '<S103>' : 'MotorModel_Sp23_V20a/horz motor/Motor Direction1'
- * '<S104>' : 'MotorModel_Sp23_V20a/vert motor/Constant Position'
- * '<S105>' : 'MotorModel_Sp23_V20a/vert motor/Motor Direction 2'
- * '<S106>' : 'MotorModel_Sp23_V20a/vert motor/Motor Direction1'
+ * '<S104>' : 'MotorModel_Sp23_V20a/horz motor1/Constant Position'
+ * '<S105>' : 'MotorModel_Sp23_V20a/horz motor1/Motor Direction 2'
+ * '<S106>' : 'MotorModel_Sp23_V20a/horz motor1/Motor Direction1'
  */
 #endif                                 /* RTW_HEADER_MotorModel_Sp23_V20a_h_ */

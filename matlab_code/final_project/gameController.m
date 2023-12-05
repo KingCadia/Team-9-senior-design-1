@@ -14,8 +14,9 @@ classdef gameController < handle
     
     methods(Access = public)
         function obj = gameController(player, computer, board)
-            obj.boardCon = boardController();
-            % note remember to put in the camera
+            % makes the board controller
+            %obj.boardCon = boardController();
+            
             obj.board = board;
             obj.playerPiece = player;
             obj.ComPiece = computer;
@@ -156,7 +157,7 @@ classdef gameController < handle
         end
             
             % makes move for the computer
-        function errorCode = makeMoveComTest(obj)
+        function [x, y] = makeMoveComTest(obj)
             % plays defensivly
             for i = 1:3
                 for j = 1:3
@@ -169,7 +170,8 @@ classdef gameController < handle
                             % that move
                             obj.board(i, j) = obj.ComPiece;
                             obj.emptySpaces = obj.emptySpaces - 1;
-                            
+                            x = i;
+                            y = j;
                             return;
                         end 
                     end
@@ -195,7 +197,7 @@ classdef gameController < handle
             [x, y] = obj.miniMax(obj.ComPiece);
             obj.board(x, y) = obj.ComPiece;
             obj.emptySpaces = obj.emptySpaces - 1;
-            errorCode = 1;
+            return;
         end
         
         % checks to see if the game is won
